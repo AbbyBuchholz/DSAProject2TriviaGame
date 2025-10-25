@@ -1,4 +1,4 @@
 # ninja log v6
-8	526	7830225843749354	build.ninja	740582fec41ecf85
-40	486	7830225846164436	CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj	3f02f417ddfc1595
 488	715	7830225850645138	DSAProject2TriviaGame.exe	4b8bdd6c4bd2c98e
+40	486	7830225846164436	CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj	3f02f417ddfc1595
+3	416	7831366138631270	build.ninja	740582fec41ecf85
