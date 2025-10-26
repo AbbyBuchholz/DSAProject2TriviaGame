@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include 'question.cpp'
 
 using namespace std;
 
