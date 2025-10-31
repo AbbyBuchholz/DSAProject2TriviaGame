@@ -3,6 +3,7 @@
 #include "DataSource.h"
 #include "BSTElement.h"
 #include <queue>
+#include <list>
 using namespace std;
 
 using namespace bridges;
@@ -14,8 +15,12 @@ int main() {
     bridges.setTitle("Accessing Necessary Data");
     DataSource ds (&bridges);
 
-    int count = 0;
+    int count1 = 0;
+    int count2 = 0;
+    int count3 = 0;
+    int count4 = 0;
 
+    cout << "IMDB1 Data:" << endl;
     vector<ActorMovieIMDB> actor_list1 = ds.getActorMovieIMDBData();
     for (int i = 0; i < actor_list1.size(); i++)
     {
@@ -30,13 +35,14 @@ int main() {
         }
         else
         {
-            cout << "IMDB Data:" << endl
+            cout
                 << "\tActor: " << currActor << endl
-                << "\tMovie: " << currMovie << endl;
-            count++;
+                << "\tMovie: " << currMovie << "\n" << endl;
+            count1++;
         }
     }
 
+    cout << "IMDB2 Data:" << endl;
     vector<ActorMovieIMDB> actor_list2 = ds.getActorMovieIMDBData2();
     for (int j = 0; j < actor_list2.size(); j++)
     {
@@ -65,15 +71,54 @@ int main() {
             }
             else
             {
-                cout << "IMDB Data:" << endl
-                << "\tActor: " << currActor << endl
+                cout << "\tActor: " << currActor << endl
                 << "\tMovie: " << currMovie << endl
-                << "\tGenre: " << currGenres << endl;
-                count++;
+                << "\tGenre: " << currGenres << "\n" << endl;
+                count2++;
             }
         }
     }
 
-    cout << count << endl;
+    cout << "Song Data:" << endl;
+    vector<Song> song_list = ds.getSongData();
+    for (int i = 0; i < song_list.size(); i++)
+    {
+        string currArtist = song_list[i].getArtist();
+        string currTitle = song_list[i].getSongTitle();
+        string currDate = song_list[i].getReleaseDate();
+        string currAlbum = song_list[i].getAlbumTitle();
+        cout
+                << "\tArtist: " << currArtist << endl
+                << "\tSong: " << currTitle << endl
+                << "\tDate: " << currDate << endl
+                << "\tAlbum: " << currAlbum << "\n" << endl;
+        count3++;
+    }
+
+    cout << "Book Data:" << endl;
+    vector<GutenbergBook> books_list = ds.getGutenbergBookMetaData("en", "language");
+    for (int k = 0; k < books_list.size(); k++)
+    {
+        vector<string> allAuthors = books_list[k].getAuthors();
+        string currAuthors = "";
+        for(string item : allAuthors)
+        {
+            currAuthors += item + ", ";
+        }
+        string currTitle = books_list[k].getTitle();
+
+        cout << "\tAuthor: " << currAuthors << endl;
+        cout << "\tTitle: " << currTitle << endl;
+        count4++;
+    }
+
+    cout << "IMDB 1 Count: " << count1 << endl;
+    cout << "IMDB 2 Count: " << count2 << endl;
+    cout << "Song Count: " << count3 << endl;
+    cout << "Book Count: " << count4 << endl;
+
+    int total = count1 + count2 + count3 + count4;
+    cout << "Total Count: " << total << endl;
+
     return 0;
 }

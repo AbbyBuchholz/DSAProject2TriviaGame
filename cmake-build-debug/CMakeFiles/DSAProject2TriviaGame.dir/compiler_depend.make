@@ -80,6 +80,7 @@ CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj: C:/Users/jedis/CLionProje
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/invoke.h \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ios_base.h \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc \
+  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/list.tcc \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.h \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.tcc \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_conv.h \
@@ -129,6 +130,7 @@ CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj: C:/Users/jedis/CLionProje
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator.h \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator_base_funcs.h \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator_base_types.h \
+  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_list.h \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_map.h \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_multiset.h \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_pair.h \
@@ -186,6 +188,7 @@ CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj: C:/Users/jedis/CLionProje
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iterator \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/limits \
+  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/list \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/locale \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/math.h \
   C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/new \
@@ -814,6 +817,12 @@ C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw3
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets_nonio.tcc:
 
+C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/winscard.h:
+
+C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/list.tcc:
+
+C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdlib_s.h:
+
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.h:
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.tcc:
@@ -937,6 +946,8 @@ C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w6
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cmath:
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator_base_types.h:
+
+C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_list.h:
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/math.h:
 
@@ -1086,6 +1097,10 @@ C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w6
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream:
 
+C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/list:
+
+C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h:
+
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/locale:
 
 C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/DataSource.h:
@@ -1157,8 +1172,6 @@ C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w6
 C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/data_src/CancerIncidence.h:
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h:
-
-C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h:
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h:
 
@@ -1500,10 +1513,6 @@ C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw3
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdio_s.h:
 
-C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/winscard.h:
-
-C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdlib_s.h:
-
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/sec_api/wchar_s.h:
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/securityappcontainer.h:
@@ -1529,8 +1538,6 @@ C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw3
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/sys/timeb.h:
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/threadpoollegacyapiset.h:
-
-C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/data_src/GutenbergBook.h:
 
 C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/x86_64-w64-mingw32/include/vadefs.h:
 
@@ -1593,6 +1600,8 @@ C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/rap
 C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/data_src/EarthquakeUSGS.h:
 
 C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/data_src/Game.h:
+
+C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/data_src/GutenbergBook.h:
 
 C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/data_src/MovieActorWikidata.h:
 

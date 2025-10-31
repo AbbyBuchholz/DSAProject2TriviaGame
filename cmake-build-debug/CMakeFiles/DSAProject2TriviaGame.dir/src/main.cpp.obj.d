@@ -556,4 +556,7 @@ CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj: \
  C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/BinTreeElement.h \
  C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/TreeElement.h \
  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/queue \
- C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_queue.h
+ C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_queue.h \
+ C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/list \
+ C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_list.h \
+ C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/list.tcc
