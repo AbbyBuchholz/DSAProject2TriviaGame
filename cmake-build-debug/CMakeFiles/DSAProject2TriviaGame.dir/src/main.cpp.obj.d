@@ -1,5 +1,6 @@
 CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj: \
  C:\Users\jedis\CLionProjects\DSAProject2TriviaGame\src\main.cpp \
+ C:\Users\jedis\CLionProjects\DSAProject2TriviaGame\src\question.h \
  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iostream \
  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/requires_hosted.h \
  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
@@ -139,7 +140,6 @@ CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj: \
  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_vector.h \
  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_bvector.h \
  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/vector.tcc \
- C:\Users\jedis\CLionProjects\DSAProject2TriviaGame\src\question.h \
  C:/Users/jedis/CLionProjects/DSAProject2TriviaGame/libraries/bridges/include/Bridges.h \
  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm \
  C:/Program\ Files\ (x86)/JetBrains/CLion\ 2024.2.0.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algo.h \

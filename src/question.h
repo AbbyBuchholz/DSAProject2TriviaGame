@@ -8,8 +8,6 @@
 #include <cctype>
 using namespace std;
 
-
-
 class Question {
     public:
         string question;
