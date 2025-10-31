@@ -16,15 +16,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+#app {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
 }
 
+header{
+  display:inline-flex;
+  width: 100%;
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -32,9 +37,9 @@ h1 {
   text-shadow: -1px 1px 2px rgba(114,132,162,0.87);
 }
 
-content{
+#mainBlock{
   display: inline-flex;
-  width: 1200px;
+  width: 100%;
   margin: 0 5%;
 }
 main{
@@ -91,11 +96,11 @@ aside{
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #A886C2;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #A886C2;
 }
 
 input:checked + .slider:before {
@@ -110,4 +115,98 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+.flexBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 0 22%;
+}
+.flexItem {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: 5px 0;
+}
+#toggle-text{
+  margin-left: 8px;
+  position: relative;
+  top: 4px;
+}
+
+.multiselect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle {
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.toggle input{
+  display: none;
+}
+
+.toggle-box {
+  width: 60px;
+  height: 24px;
+  border: 2px solid #888;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.toggle input:checked + .toggle-box {
+  background-color: #A886C2;
+}
+
+#topBar{
+  display: flex;
+  justify-content: center;
+}
+#categoryDisplay{
+  display:flex;
+  width: 60%;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  border: 2px solid #888;
+  border-radius: 6px;
+  font-size: 60px;
+}
+.buttonGuess{
+  display: none;
+}
+.buttonBar{
+  display: inline-flex;
+  background-color: #A886C2;
+  width: 120px;
+  height: 50px;
+  cursor:pointer;
+  margin: 0 5px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #888;
+}
+
+.buttonBar:active{
+  background-color: #7340B5;
+  color: white;
+}
+
+#timeBar{
+  display: inline-flex;
+  width: 80%;
+  height: 20px;
+  background: #d496cb;
+  background: linear-gradient(90deg,rgba(212, 150, 203, 1) 90%, rgba(255, 255, 255, 1) 90%);
+  border-radius: 6px;
+  border: 2px solid #888;
 }
