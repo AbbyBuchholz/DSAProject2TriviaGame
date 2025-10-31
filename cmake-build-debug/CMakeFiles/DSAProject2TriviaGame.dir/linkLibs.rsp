@@ -1,1 +1,1 @@
- -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+  -LC:/Users/jedis/CLionProjects/DSAProject2TriviaGame/{CMAKE_CURRENT_SOURCE_DIR}/../libraries/bridges/lib  -LC:/Users/jedis/CLionProjects/DSAProject2TriviaGame/{CMAKE_CURRENT_SOURCE_DIR}/../libraries/curl/lib  -lcurl -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

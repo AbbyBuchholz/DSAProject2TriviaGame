@@ -4,7 +4,7 @@
 # compile CXX with C:/Program Files (x86)/JetBrains/CLion 2024.2.0.1/bin/mingw/bin/g++.exe
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = @CMakeFiles/DSAProject2TriviaGame.dir/includes_CXX.rsp
 
 CXX_FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
 
