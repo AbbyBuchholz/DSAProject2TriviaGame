@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect} from 'react'
 import './App.css'
 
 function App() {
@@ -9,50 +9,6 @@ function App() {
   const [selected, setSelected] = useState(Array(options.length).fill(true));
   const [randomItem, setRandomItem] = useState("Click Next!");
     const [randomColor, setRandomColor] = useState('white');
-
-
-    const inputRef = useRef();
-
-    const [customTime, setCustomTime] = useState("");
-    const [timeLeft, setTimeLeft] = useState("");
-    const [isActive, setActivity] = useState(false);
-    const [progressDone, setProgressDone] = useState(false);
-    const [progress, setProgress] = useState(100);
-
-    // const handleChange = (e) => {
-    //     setCustomTime(e.target.value);
-    // };
-
-
-    var customTimeMilliseconds = customTime * 60 * 1000;
-
-    var customTimeSeconds = customTime * 60;
-
-    var seconds = customTimeSeconds - (customTime * 60);
-
-    useEffect(() =>{
-        let timer;
-
-        if (isActive && timeLeft > 0){
-            timer = setTimeout(() =>{
-                setTimeLeft((prevTime) => prevTime -1);
-            }, 1000);
-        } else if(timeLeft == 0){
-            setActivity(false);
-            setProgressDone(true);
-        }
-        return () => clearTimeout(timer);
-    }, [timeLeft, isActive]);
-    var minutes = Math.floor(timeLeft / 60);
-    var seconds = timeLeft - minutes * 60;
-
-    if(seconds < 10){
-        seconds = "0"+seconds;
-    }
-    // const handleInputChange = (event) => {
-    //     setCustomTime(inputRef.current.value);
-    // }
-
 
     const toggleBox = (index) => {
         setSelected((prev) =>{
@@ -75,10 +31,6 @@ function App() {
         setRandomItem(categories[randomIndex]);
         setRandomColor(categoryColor[randomIndex]);
 
-        /*setTimeLeft(res);
-        setActivity(true);
-        setProgressDone(false);
-        console.log(isActive, progressDone, timeLeft);*/
     };
   return (
       <>
@@ -97,7 +49,6 @@ function App() {
               <p>3</p>
                   </span>
               </div>
-              <div id="timeBar"></div>
               <div id="question">
                   <p>Hello!</p>
               </div>
@@ -132,17 +83,6 @@ function App() {
                           </label>
                           <span id="toggle-text">Heap Sort</span>
                       </div>
-                  </div>
-                  <div>
-                      <span>Guessing Time:</span>
-                      <span>
-                      <select>
-                          <option value="30">0:30</option>
-                          <option value="45">0:45</option>
-                          <option value="60" selected>1:00</option>
-                          <option value="90">1:30</option>
-                          <option value="120">2:00</option>
-                      </select></span>
                   </div>
                   <p>Select categories:</p>
                   <div className="multiselect">
