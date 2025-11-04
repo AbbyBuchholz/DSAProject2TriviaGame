@@ -85,6 +85,10 @@ int main() {
                 currMovie.erase(stPos, phraseLen);
                 currMovie.insert(0, currPhrase);
             }
+
+            Movies1* m1 = new Movies1(currActor, currMovie, currYear, i % 10);
+            questions.push_back(*m1);
+
             cout
                 << "Movie: " << currMovie << endl
                 << "\tActor: " << currActor << endl
@@ -141,6 +145,10 @@ int main() {
                 int endPos = currMovie.find(')');
                 string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
                 currMovie.erase(startPos, endPos);
+
+                Movies2* m2 = new Movies2(currActor, currMovie, currGenres, currYear, to_string(currRating), j % 10);
+                questions.push_back(*m2);
+
                 cout
                 << "Movie: " << currMovie << endl
                 << "\tActor: " << currActor << endl
@@ -160,6 +168,9 @@ int main() {
         string currArtist = song_list[i].getArtist();
         string currDate = song_list[i].getReleaseDate();
         string currAlbum = song_list[i].getAlbumTitle();
+
+        Songs* s = new Songs(currTitle, currAlbum, currDate, currArtist, i % 10);
+        questions.push_back(*s);
         cout
                 << "Song: " << currTitle << endl
                 << "\tArtist: " << currArtist << endl
@@ -190,6 +201,10 @@ int main() {
         {
             currGenres += item + ", ";
         }
+
+        Books* b = new Books(currAuthors, currTitle, currLang, currGenres, k % 10);
+        questions.push_back(*b);
+
         cout
                 << "Title: " << currTitle << endl
                 << "\tAuthor: " << currAuthors << endl
@@ -213,6 +228,9 @@ int main() {
         string currTime = cities_list[i].getTimeZone();
         int currLat = cities_list[i].getLatitude();
         int currLong = cities_list[i].getLongitude();
+
+        Cities* c = new Cities(currCity, currState, currCountry, to_string(currPop), to_string(currEle), currTime, to_string(currLat), to_string(currLong), i % 10);
+        questions.push_back(*c);
         cout
                 << "City: " << currCity << endl
                 << "\tState: " << currState << endl
@@ -233,6 +251,7 @@ int main() {
 
     int total = count1 + count2 + count3 + count4 + count5;
     cout << "Total Count: " << total << endl;
+    cout << "Vector: " << questions.size() << endl;
 
     return 0;
 }
