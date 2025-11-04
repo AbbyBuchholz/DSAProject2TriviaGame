@@ -113,35 +113,35 @@ Books::Books(string a, string t, string l, string g, int v) {
 
 void Books::createQuestion() {
     if (variation == 1) {
-        question = "";
-        answer = "";
+        question = "This" + author + " wrote the " + language + " language book " + title + ". What genre is it in?";
+        answer = genre;
     } else if (variation == 2) {
-        question = "";
-        answer = "";
+        question = "Who wrote " + title + "?";
+        answer = author;
     } else if (variation == 3) {
-        question = "";
-        answer = "";
+        question = "What language is " + title + " by " + author + "in?";
+        answer = language;
     } else if (variation == 4) {
-        question = "";
-        answer = "";
+        question = "What book did " + author + " write?";
+        answer = title;
     } else if (variation == 5) {
-        question = "";
-        answer = "";
+        question = title + ",  a seminal work in the" + genre + " genre, was written by which author?";
+        answer = author;
     } else if (variation == 6) {
-        question = "";
-        answer = "";
+        question = "Who wrote the " + genre + title + "?";
+        answer = author;
     } else if (variation == 7) {
-        question = "";
-        answer = "";
+        question = "What famous " + genre + " was written by " + author + "?";
+        answer = title;
     } else if (variation == 8) {
-        question = "";
-        answer = "";
+        question = title + " was written by whom?";
+        answer = author;
     } else if (variation == 9) {
-        question = "";
-        answer = "";
+        question = "What genre is " + title + "?";
+        answer = genre;
     } else if (variation == 10) {
-        question = "";
-        answer = "";
+        question = "What eloquent orator wrote the masterpiece " + title + "?";
+        answer = author;
     }
 }
 
@@ -171,35 +171,35 @@ Cities::Cities(string n, string s, string c, string p, string e, string tz, stri
 
 void Cities::createQuestion() {
     if (variation == 1) {
-        question = "";
-        answer = "";
+        question = "What city is at the latitude of " + latitude + " and the longitude of " + longitude + "?";
+        answer = name;
     } else if (variation == 2) {
-        question = "";
-        answer = "";
+        question = "What city in " + state + " has a population of " + population + "?";
+        answer = name;
     } else if (variation == 3) {
-        question = "";
-        answer = "";
+        question = "What state has the city of " + name + " and a population of " + population + "?";
+        answer = state;
     } else if (variation == 4) {
-        question = "";
-        answer = "";
+        question = "What country features the city " + name + "?";
+        answer = country;
     } else if (variation == 5) {
-        question = "";
-        answer = "";
+        question = "What time zone is " + name + " in?";
+        answer = timeZone;
     } else if (variation == 6) {
-        question = "";
-        answer = "";
+        question = "What city in " + state + " has a population of " + population + " and is in the " + timeZone + " time zone?";
+        answer = name;
     } else if (variation == 7) {
-        question = "";
-        answer = "";
+        question = "What city is at the latitude of " + latitude + " and the longitude of " + longitude + " and at an elevation of " + elevation + "?";
+        answer = name;
     } else if (variation == 8) {
-        question = "";
-        answer = "";
+        question = "What city in " + state + " and is at the latitude of " + latitude + " and the longitude of " + longitude + " and at an elevation of " + elevation + "?";
+        answer = name;
     } else if (variation == 9) {
-        question = "";
-        answer = "";
+        question = "What state is at the latitude of " + latitude + " and the longitude of " + longitude + " and at an elevation of " + elevation + " and has the city " + name + "?";
+        answer = state;
     } else if (variation == 10) {
-        question = "";
-        answer = "";
+        question = "If" + name + " is at longitude " + longitude + ", what time zone is it in?";
+        answer = timeZone;
     }
 }
 
@@ -221,35 +221,35 @@ string Movies1::decideSubCategory() {
 
 void Movies1::createQuestion() {
     if (variation == 1) {
-        question = "";
-        answer = "";
+        question = "What year did " + title + "starring " + actor + "come out?";
+        answer = year;
     } else if (variation == 2) {
-        question = "";
-        answer = "";
+        question = "What movie did " + actor + " star in " + year + "?";
+        answer = title;
     } else if (variation == 3) {
-        question = "";
-        answer = "";
+        question = "What year did " + title + " release?";
+        answer = year;
     } else if (variation == 4) {
-        question = "";
-        answer = "";
+        question = "What film did " + actor + " perform in " + year + "?";
+        answer = title;
     } else if (variation == 5) {
-        question = "";
-        answer = "";
+        question = "In " + year + ", what movie did " + actor + "appear in?";
+        answer = title;
     } else if (variation == 6) {
-        question = "";
-        answer = "";
+        question = "In " + title + " (" + year + "), which actor has a notable appearance?";
+        answer = actor;
     } else if (variation == 7) {
-        question = "";
-        answer = "";
+        question = actor + " notably appears in what movie from " + year + "?";
+        answer = title;
     } else if (variation == 8) {
-        question = "";
-        answer = "";
+        question = actor + " appears in " + title + " in which year?";
+        answer = year;
     } else if (variation == 9) {
-        question = "";
-        answer = "";
+        question = "You’re a time traveler in the year" + year + "and just got invited to the movie starring" + actor + ". Which movie are you seeing?";
+        answer = title;
     } else if (variation == 10) {
-        question = "";
-        answer = "";
+        question = "You’re a time traveler who doesn’t know what year it is and just got invited to the movie" + title + "starring" + actor + ". What year are you in?";
+        answer = year;
     }
 }
 
@@ -275,35 +275,35 @@ string Movies2::decideSubCategory() {
 
 void Movies2::createQuestion() {
     if (variation == 1) {
-        question = "";
-        answer = "";
+        question = "What year did " + title + "starring " + actor + "come out?";
+        answer = year;
     } else if (variation == 2) {
-        question = "";
-        answer = "";
+        question = "What movie did " + actor + " star in " + year + "?";
+        answer = title;
     } else if (variation == 3) {
-        question = "";
-        answer = "";
+        question = "What year did " + title + " release?";
+        answer = year;
     } else if (variation == 4) {
-        question = "";
-        answer = "";
+        question = "What film did " + actor + " perform in " + year + "?";
+        answer = title;
     } else if (variation == 5) {
-        question = "";
-        answer = "";
+        question = "What " + rating + " movie from the year" + year + " did " + actor + "star in?";
+        answer = actor;
     } else if (variation == 6) {
-        question = "";
-        answer = "";
+        question = "What rating does " + title + "have?";
+        answer = rating;
     } else if (variation == 7) {
-        question = "";
-        answer = "";
+        question = "What genre is" + title + "starring " + actor + "?";
+        answer = genre;
     } else if (variation == 8) {
-        question = "";
-        answer = "";
+        question = "What movie stars " + actor + ", is a " + genre + ", came out in " + year + ", and has a rating of " + rating + "?";
+        answer = title;
     } else if (variation == 9) {
-        question = "";
-        answer = "";
+        question = "In " + year + ", what movie did " + actor + "appear in?";
+        answer = year;
     } else if (variation == 10) {
-        question = "";
-        answer = "";
+        question = "What movie starring " + actor + " released in " + year + "?";
+        answer = title;
     }
 }
 
@@ -333,35 +333,35 @@ string Songs::decideSubCategory() {
 
 void Songs::createQuestion() {
     if (variation == 1) {
-        question = "";
-        answer = "";
+        question = "What year was " + album + " by " + artist + " released?";
+        answer = releaseDate;
     } else if (variation == 2) {
-        question = "";
-        answer = "";
+        question = "Which album is " + title + " on?";
+        answer = album;
     } else if (variation == 3) {
-        question = "";
-        answer = "";
+        question = "Which artist released the album " + album + "?";
+        answer = artist;
     } else if (variation == 4) {
-        question = "";
-        answer = "";
+        question = "What year was " + album + "released?";
+        answer = releaseDate;
     } else if (variation == 5) {
-        question = "";
-        answer = "";
+        question = "Which artist released" + album + "in " + releaseDate + "?";
+        answer = artist;
     } else if (variation == 6) {
-        question = "";
-        answer = "";
+        question = title + "on the album" + album + "was by which artist?";
+        answer = artist;
     } else if (variation == 7) {
-        question = "";
-        answer = "";
+        question = releaseDate + "‘s " + album + " was released by which artist?";
+        answer = artist;
     } else if (variation == 8) {
-        question = "";
-        answer = "";
+        question = "What album did " + artist + " drop in " + releaseDate + "?";
+        answer = album;
     } else if (variation == 9) {
-        question = "";
-        answer = "";
+        question = "What year did " + artist + " drop the song " + title + "?";
+        answer = releaseDate;
     } else if (variation == 10) {
-        question = "";
-        answer = "";
+        question = "What year did " + artist + " drop the album " + album + "?";
+        answer = releaseDate;
     }
 }
 
