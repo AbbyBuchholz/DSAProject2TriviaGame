@@ -1,0 +1,32 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+
+const std::string filename = "numbers.txt";
+
+int main() {
+    std::srand(std::time(nullptr));
+    std::ifstream infile(filename);
+
+    if(!infile.good()) {
+      std::ofstream outfile("numbers.txt");
+      for(int i = 0; i < 100; i++) {
+        outfile << std::rand() << " " << std::endl;
+      }
+      std::cout << "Vector created!" << std::endl;
+      outfile.close();
+    } else{
+      std::vector<int> numbers;
+      int num;
+      while(infile >> num) {
+        numbers.push_back(num);
+      }
+      infile.close();
+
+    int index = rand() % numbers.size();
+    std::cout << numbers[index] << std::endl;
+}
+return 0;
+}
