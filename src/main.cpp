@@ -9,6 +9,7 @@ using namespace std;
 using namespace bridges;
 // hi sophia and adam!! hope y'all are well :)
 // we got this
+// im gonna explode
 
 int main() {
     Bridges bridges(1, "s-pappous", "1078662839858");
@@ -19,8 +20,9 @@ int main() {
     int count2 = 0;
     int count3 = 0;
     int count4 = 0;
+    int count5 = 0;
 
-    cout << "IMDB1 Data:" << endl;
+    // cout << "IMDB1 Data:" << endl;
     vector<ActorMovieIMDB> actor_list1 = ds.getActorMovieIMDBData();
     for (int i = 0; i < actor_list1.size(); i++)
     {
@@ -35,9 +37,9 @@ int main() {
         }
         else
         {
-            cout
-                << "\tActor: " << currActor << endl
-                << "\tMovie: " << currMovie << "\n" << endl;
+            // cout
+            //     << "\tActor: " << currActor << endl
+            //     << "\tMovie: " << currMovie << "\n" << endl;
             count1++;
         }
     }
@@ -71,9 +73,9 @@ int main() {
             }
             else
             {
-                cout << "\tActor: " << currActor << endl
-                << "\tMovie: " << currMovie << endl
-                << "\tGenre: " << currGenres << "\n" << endl;
+                // cout << "\tActor: " << currActor << endl
+                // << "\tMovie: " << currMovie << endl
+                // << "\tGenre: " << currGenres << "\n" << endl;
                 count2++;
             }
         }
@@ -96,7 +98,11 @@ int main() {
     }
 
     cout << "Book Data:" << endl;
-    vector<GutenbergBook> books_list = ds.getGutenbergBookMetaData("en", "language");
+    vector<GutenbergBook> books_list;
+    for (int i = 1; i < 40; i++) {
+        books_list.push_back(ds.getGutenbergBookMetaData(i));
+    }
+    cout << "book size: " << books_list.size() << endl;
     for (int k = 0; k < books_list.size(); k++)
     {
         vector<string> allAuthors = books_list[k].getAuthors();
@@ -112,12 +118,34 @@ int main() {
         count4++;
     }
 
+    cout << "U.S. City Data: " << endl;
+    unordered_map<string, string> city_params{
+        {"min_pop", "600000"}
+    };
+    vector<City> cities_list = ds.getUSCities(city_params);
+    for (int i = 0; i < cities_list.size(); i++)
+    {
+        string currCity = cities_list[i].getCity();
+        string currState = cities_list[i].getState();
+        int currPop = cities_list[i].getPopulation();
+        int currEle = cities_list[i].getElevation();
+        string currTime = cities_list[i].getTimeZone();
+        cout
+                << "City: " << currCity << endl
+                << "\tState: " << currState << endl
+                << "\tPopulation: " << currPop << endl
+                << "\tElevation: " << currEle << " meters" << endl
+                << "\tTime Zone: " << currTime << "\n" << endl;
+        count5++;
+    }
+
     cout << "IMDB 1 Count: " << count1 << endl;
     cout << "IMDB 2 Count: " << count2 << endl;
     cout << "Song Count: " << count3 << endl;
     cout << "Book Count: " << count4 << endl;
+    cout << "U.S. City Count: " << count5 << endl;
 
-    int total = count1 + count2 + count3 + count4;
+    int total = count1 + count2 + count3 + count4 + count5;
     cout << "Total Count: " << total << endl;
 
     return 0;
