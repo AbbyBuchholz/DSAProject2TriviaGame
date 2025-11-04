@@ -19,6 +19,7 @@ int main() {
     int count2 = 0;
     int count3 = 0;
     int count4 = 0;
+    int count5 = 0;
 
     cout << "IMDB1 Data:" << endl;
     vector<ActorMovieIMDB> actor_list1 = ds.getActorMovieIMDBData();
@@ -112,12 +113,34 @@ int main() {
         count4++;
     }
 
+    cout << "U.S. City Data: " << endl;
+    unordered_map<string, string> city_params{
+        {"min_pop", "600000"}
+    };
+    vector<City> cities_list = ds.getUSCities(city_params);
+    for (int i = 0; i < cities_list.size(); i++)
+    {
+        string currCity = cities_list[i].getCity();
+        string currState = cities_list[i].getState();
+        int currPop = cities_list[i].getPopulation();
+        int currEle = cities_list[i].getElevation();
+        string currTime = cities_list[i].getTimeZone();
+        cout
+                << "City: " << currCity << endl
+                << "\tState: " << currState << endl
+                << "\tPopulation: " << currPop << endl
+                << "\tElevation: " << currEle << " meters" << endl
+                << "\tTime Zone: " << currTime << "\n" << endl;
+        count5++;
+    }
+
     cout << "IMDB 1 Count: " << count1 << endl;
     cout << "IMDB 2 Count: " << count2 << endl;
     cout << "Song Count: " << count3 << endl;
     cout << "Book Count: " << count4 << endl;
+    cout << "U.S. City Count: " << count5 << endl;
 
-    int total = count1 + count2 + count3 + count4;
+    int total = count1 + count2 + count3 + count4 + count5;
     cout << "Total Count: " << total << endl;
 
     return 0;
