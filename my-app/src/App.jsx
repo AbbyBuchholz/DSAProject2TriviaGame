@@ -10,6 +10,9 @@ function App() {
   const [randomItem, setRandomItem] = useState("Click Next!");
     const [randomColor, setRandomColor] = useState('white');
 
+    const[question, setQuestion] = useState("");
+    const[points, setPoints] = useState(0);
+
     const toggleBox = (index) => {
         setSelected((prev) =>{
             const updated = [...prev];
@@ -22,7 +25,7 @@ function App() {
         });
     };
 
-    const pickRandomItem = () => {
+    const pickRandomItem = async () => {
         let randomIndex = Math.floor(Math.random() * categories.length);
         //console.log(randomIndex, selected[randomIndex]);
         while (selected[randomIndex] !== true){
@@ -31,6 +34,22 @@ function App() {
         setRandomItem(categories[randomIndex]);
         setRandomColor(categoryColor[randomIndex]);
 
+        try{
+            const res = await fetch("http://localhost:5000/random");
+            const data = await res.json();
+            setQuestion(data.question || "Got questions! Click Next to begin!");
+        } catch {
+            setQuestion("Couldn't find a question!");
+        }
+    };
+
+    const answering = async () => {
+        try{
+            const res = await fetch("http://localhost:5000/random");
+            const data = await res.json();
+        } catch {
+            setPoints(-30);
+        }
     };
   return (
       <>
@@ -46,11 +65,11 @@ function App() {
                   {randomItem && randomColor && <div id="categoryDisplay" style={{backgroundColor: randomColor}}>{randomItem}</div>}
                   <span>
               <p>Points:</p>
-              <p>3</p>
+              <p>0</p>
                   </span>
               </div>
               <div id="question">
-                  <p>Hello!</p>
+                  <p>{question}</p>
               </div>
               <div id="guessingArea">
                   <p>Guess:</p>
