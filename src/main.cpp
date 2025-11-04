@@ -22,7 +22,7 @@ int main() {
     int count4 = 0;
     int count5 = 0;
 
-    // cout << "IMDB1 Data:" << endl;
+    cout << "IMDB1 Data:" << endl;
     vector<ActorMovieIMDB> actor_list1 = ds.getActorMovieIMDBData();
     for (int i = 0; i < actor_list1.size(); i++)
     {
@@ -37,10 +37,15 @@ int main() {
         }
         else
         {
-            // cout
-            //     << "\tActor: " << currActor << endl
-            //     << "\tMovie: " << currMovie << "\n" << endl;
-            count1++;
+            int startPos = currMovie.find('(');
+            int endPos = currMovie.find(')');
+            string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
+            currMovie.erase(startPos, endPos);
+            cout
+                << "Movie: " << currMovie << endl
+                << "\tActor: " << currActor << endl
+                << "\tYear: " << currYear << "\n" << endl;
+            count1 += 3;
         }
     }
 
@@ -52,6 +57,7 @@ int main() {
         replace(currActor.begin(), currActor.end(), '_', ' ');
         string currMovie = actor_list2[j].getMovie();
         replace(currMovie.begin(), currMovie.end(), '_', ' ');
+        int currRating = actor_list2[j].getMovieRating();
 
         if(currMovie.find('#') != string::npos || currMovie.find('{') != string::npos || currMovie.find("(TV)") != string::npos)
         {
@@ -73,10 +79,17 @@ int main() {
             }
             else
             {
-                // cout << "\tActor: " << currActor << endl
-                // << "\tMovie: " << currMovie << endl
-                // << "\tGenre: " << currGenres << "\n" << endl;
-                count2++;
+                int startPos = currMovie.find('(');
+                int endPos = currMovie.find(')');
+                string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
+                currMovie.erase(startPos, endPos);
+                cout
+                << "Movie: " << currMovie << endl
+                << "\tActor: " << currActor << endl
+                << "\tGenre: " << currGenres << endl
+                << "\tYear: " << currYear << endl
+                << "\tRating: " << currRating << "/10\n" << endl;
+                count2 += 4 + allGenres.size();
             }
         }
     }
@@ -85,16 +98,16 @@ int main() {
     vector<Song> song_list = ds.getSongData();
     for (int i = 0; i < song_list.size(); i++)
     {
-        string currArtist = song_list[i].getArtist();
         string currTitle = song_list[i].getSongTitle();
+        string currArtist = song_list[i].getArtist();
         string currDate = song_list[i].getReleaseDate();
         string currAlbum = song_list[i].getAlbumTitle();
         cout
+                << "Song: " << currTitle << endl
                 << "\tArtist: " << currArtist << endl
-                << "\tSong: " << currTitle << endl
                 << "\tDate: " << currDate << endl
                 << "\tAlbum: " << currAlbum << "\n" << endl;
-        count3++;
+        count3 += 4;
     }
 
     cout << "Book Data:" << endl;
@@ -102,41 +115,56 @@ int main() {
     for (int i = 1; i < 40; i++) {
         books_list.push_back(ds.getGutenbergBookMetaData(i));
     }
-    cout << "book size: " << books_list.size() << endl;
     for (int k = 0; k < books_list.size(); k++)
     {
+        string currTitle = books_list[k].getTitle();
+
         vector<string> allAuthors = books_list[k].getAuthors();
         string currAuthors = "";
         for(string item : allAuthors)
         {
             currAuthors += item + ", ";
         }
-        string currTitle = books_list[k].getTitle();
-
-        cout << "\tAuthor: " << currAuthors << endl;
-        cout << "\tTitle: " << currTitle << endl;
-        count4++;
+        string currLang = books_list[k].getLang();
+        vector<string> allGenres = books_list[k].getGenres();
+        string currGenres = "";
+        for(string item : allGenres)
+        {
+            currGenres += item + ", ";
+        }
+        cout
+                << "Title: " << currTitle << endl
+                << "\tAuthor: " << currAuthors << endl
+                << "\tLanguage: " << currLang << endl
+                << "\tGenres: " << currGenres << "\n" << endl;
+        count4 += 2 + allAuthors.size() + allGenres.size();
     }
 
     cout << "U.S. City Data: " << endl;
     unordered_map<string, string> city_params{
-        {"min_pop", "600000"}
+        {"min_pop", "100000"}
     };
     vector<City> cities_list = ds.getUSCities(city_params);
     for (int i = 0; i < cities_list.size(); i++)
     {
         string currCity = cities_list[i].getCity();
         string currState = cities_list[i].getState();
+        string currCountry = cities_list[i].getCountry();
         int currPop = cities_list[i].getPopulation();
         int currEle = cities_list[i].getElevation();
         string currTime = cities_list[i].getTimeZone();
+        int currLat = cities_list[i].getLatitude();
+        int currLong = cities_list[i].getLongitude();
         cout
                 << "City: " << currCity << endl
                 << "\tState: " << currState << endl
+                << "\tCountry: " << currCountry << endl
                 << "\tPopulation: " << currPop << endl
                 << "\tElevation: " << currEle << " meters" << endl
-                << "\tTime Zone: " << currTime << "\n" << endl;
-        count5++;
+                << "\tTime Zone: " << currTime << endl
+                << "\tLatitude: " << currLat << endl
+                << "\tLongitude: " << currLong << "\n" << endl;
+        count5 += 8;
     }
 
     cout << "IMDB 1 Count: " << count1 << endl;
