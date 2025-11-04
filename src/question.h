@@ -15,11 +15,10 @@ class Question {
         string guess;
         string category;
         string subcategory;
+        int variation;
         vector<string> details;
         string getGuess();
         bool checkGuess();
-    private:
-
 };
 
 class Books: public Question {
@@ -29,11 +28,9 @@ class Books: public Question {
         }
         string author;
         string title;
-        string authorBirth;
-        string authorDeath;
+        string language;
         string genre;
-        string subject;
-        Books(string a, string t, string ab, string ad, string g, string s);
+        Books(string a, string t, string l, string g, int v);
         void createQuestion();
 };
 
@@ -44,25 +41,45 @@ class Cities: public Question {
         }
         string name;
         string state;
+        string country;
         string population;
-        Cities(string n, string s, string p);
+        string elevation;
+        string timeZone;
+        string latitude;
+        string longitude;
+        Cities(string n, string s, string c, string p, string e, string tz, string la, string lo, int v);
         string decideSubCategory();
         void createQuestion();
 };
 
-class Movies: public Question {
+class Movies1: public Question {
     public:
-        Movies() {
+        Movies1() {
+            category = "Movies";
+        }
+        string actor;
+        string title;
+        string year;
+        Movies1(string a, string t, string y, int v);
+        string decideSubCategory();
+        void createQuestion();
+};
+
+class Movies2: public Question {
+    public:
+        Movies2() {
             category = "Movies";
         }
         string actor;
         string title;
         string genre;
         string year;
-        Movies(string a, string t, string g, string y);
+        string rating;
+        Movies2(string a, string t, string g, string y, string r, int v);
         string decideSubCategory();
         void createQuestion();
 };
+
 
 class Songs: public Question {
     public:
@@ -73,80 +90,230 @@ class Songs: public Question {
         string album;
         string releaseDate;
         string artist;
-        Songs(string t, string al, string r, string ar);
+        Songs(string t, string al, string r, string ar, int v);
         string decideSubCategory();
         void createQuestion();
 };
 
 
-Books::Books(string a, string t, string ab, string ad, string g, string s) {
+Books::Books(string a, string t, string l, string g, int v) {
     category = "Books";
     author = a;
     title = t;
-    authorBirth = ab;
-    authorDeath = ad;
+    language = l;
     genre = g;
-    subject = s;
     subcategory = "author";
+    variation = v;
     details.push_back(author);
     details.push_back(title);
-    details.push_back(authorBirth);
-    details.push_back(authorDeath);
+    details.push_back(language);
     details.push_back(genre);
-    details.push_back(subject);
     createQuestion();
 }
 
 void Books::createQuestion() {
-    question = "The " + genre + ", " + title + "was written by what author who was born on " + authorBirth + " and died on " + authorDeath + "? (First and last name required)";
-    answer = author;
+    if (variation == 1) {
+        question = "";
+        answer = "";
+    } else if (variation == 2) {
+        question = "";
+        answer = "";
+    } else if (variation == 3) {
+        question = "";
+        answer = "";
+    } else if (variation == 4) {
+        question = "";
+        answer = "";
+    } else if (variation == 5) {
+        question = "";
+        answer = "";
+    } else if (variation == 6) {
+        question = "";
+        answer = "";
+    } else if (variation == 7) {
+        question = "";
+        answer = "";
+    } else if (variation == 8) {
+        question = "";
+        answer = "";
+    } else if (variation == 9) {
+        question = "";
+        answer = "";
+    } else if (variation == 10) {
+        question = "";
+        answer = "";
+    }
 }
 
 
-Cities::Cities(string n, string s, string p) {
+Cities::Cities(string n, string s, string c, string p, string e, string tz, string la, string lo, int v) {
     category = "Cities";
     name = n;
     state = s;
+    country = c;
     population = p;
+    elevation = e;
+    timeZone = tz;
+    latitude = la;
+    longitude = lo;
     subcategory = "state";
+    variation = v;
     details.push_back(name);
     details.push_back(state);
+    details.push_back(country);
     details.push_back(population);
+    details.push_back(elevation);
+    details.push_back(timeZone);
+    details.push_back(latitude);
+    details.push_back(longitude);
     createQuestion();
 }
 
 void Cities::createQuestion() {
-    question = "What state contains the city of " + name + " with a population of " + population + " people?";
-    answer = name;
+    if (variation == 1) {
+        question = "";
+        answer = "";
+    } else if (variation == 2) {
+        question = "";
+        answer = "";
+    } else if (variation == 3) {
+        question = "";
+        answer = "";
+    } else if (variation == 4) {
+        question = "";
+        answer = "";
+    } else if (variation == 5) {
+        question = "";
+        answer = "";
+    } else if (variation == 6) {
+        question = "";
+        answer = "";
+    } else if (variation == 7) {
+        question = "";
+        answer = "";
+    } else if (variation == 8) {
+        question = "";
+        answer = "";
+    } else if (variation == 9) {
+        question = "";
+        answer = "";
+    } else if (variation == 10) {
+        question = "";
+        answer = "";
+    }
 }
 
-Movies::Movies(string a, string t, string g, string y) {
+Movies1::Movies1(string a, string t, string y, int v) {
+    category = "Movies";
+    actor = a;
+    title = t;
+    year = y;
+    variation = v;
+    subcategory = decideSubCategory();
+    details.push_back(actor);
+    details.push_back(title);
+    details.push_back(year);
+}
+
+string Movies1::decideSubCategory() {
+    return "title";
+}
+
+void Movies1::createQuestion() {
+    if (variation == 1) {
+        question = "";
+        answer = "";
+    } else if (variation == 2) {
+        question = "";
+        answer = "";
+    } else if (variation == 3) {
+        question = "";
+        answer = "";
+    } else if (variation == 4) {
+        question = "";
+        answer = "";
+    } else if (variation == 5) {
+        question = "";
+        answer = "";
+    } else if (variation == 6) {
+        question = "";
+        answer = "";
+    } else if (variation == 7) {
+        question = "";
+        answer = "";
+    } else if (variation == 8) {
+        question = "";
+        answer = "";
+    } else if (variation == 9) {
+        question = "";
+        answer = "";
+    } else if (variation == 10) {
+        question = "";
+        answer = "";
+    }
+}
+
+Movies2::Movies2(string a, string t, string g, string y, string r, int v) {
     category = "Movies";
     actor = a;
     title = t;
     genre = g;
     year = y;
+    rating = r;
+    variation = v;
     subcategory = decideSubCategory();
     details.push_back(actor);
     details.push_back(title);
     details.push_back(genre);
+    details.push_back(year);
+    details.push_back(rating);
 }
 
-string Movies::decideSubCategory() {
+string Movies2::decideSubCategory() {
     return "title";
 }
 
-void Movies::createQuestion() {
-    question = "What is the title of the " + genre + " movie featuring the actor " + actor + " from the year " + year + "?";
-    answer = title;
+void Movies2::createQuestion() {
+    if (variation == 1) {
+        question = "";
+        answer = "";
+    } else if (variation == 2) {
+        question = "";
+        answer = "";
+    } else if (variation == 3) {
+        question = "";
+        answer = "";
+    } else if (variation == 4) {
+        question = "";
+        answer = "";
+    } else if (variation == 5) {
+        question = "";
+        answer = "";
+    } else if (variation == 6) {
+        question = "";
+        answer = "";
+    } else if (variation == 7) {
+        question = "";
+        answer = "";
+    } else if (variation == 8) {
+        question = "";
+        answer = "";
+    } else if (variation == 9) {
+        question = "";
+        answer = "";
+    } else if (variation == 10) {
+        question = "";
+        answer = "";
+    }
 }
 
-Songs::Songs(string t, string al, string r, string ar) {
+Songs::Songs(string t, string al, string r, string ar, int v) {
     category = "Songs";
     title = t;
     album = al;
     releaseDate = r;
     artist = ar;
+    variation = v;
     subcategory = decideSubCategory();
     details.push_back(title);
     details.push_back(album);
@@ -165,12 +332,36 @@ string Songs::decideSubCategory() {
 }
 
 void Songs::createQuestion() {
-    if (subcategory == "album") {
-        question = "What album from " + artist + "released on " + releaseDate + "features the song " + title + "?";
-        answer = album;
-    } else if (subcategory == "artist") {
-        question = "What artist wrote the song " + title + " on the album " + album + " released on " + releaseDate + "?";
-        answer = artist;
+    if (variation == 1) {
+        question = "";
+        answer = "";
+    } else if (variation == 2) {
+        question = "";
+        answer = "";
+    } else if (variation == 3) {
+        question = "";
+        answer = "";
+    } else if (variation == 4) {
+        question = "";
+        answer = "";
+    } else if (variation == 5) {
+        question = "";
+        answer = "";
+    } else if (variation == 6) {
+        question = "";
+        answer = "";
+    } else if (variation == 7) {
+        question = "";
+        answer = "";
+    } else if (variation == 8) {
+        question = "";
+        answer = "";
+    } else if (variation == 9) {
+        question = "";
+        answer = "";
+    } else if (variation == 10) {
+        question = "";
+        answer = "";
     }
 }
 
