@@ -9,7 +9,6 @@ using namespace std;
 using namespace bridges;
 // hi sophia and adam!! hope y'all are well :)
 // we got this
-// im gonna explode
 
 int main() {
     Bridges bridges(1, "s-pappous", "1078662839858");
@@ -22,12 +21,21 @@ int main() {
     int count4 = 0;
     int count5 = 0;
 
+    vector<Question> questions;
+
     cout << "IMDB1 Data:" << endl;
     vector<ActorMovieIMDB> actor_list1 = ds.getActorMovieIMDBData();
     for (int i = 0; i < actor_list1.size(); i++)
     {
+        // Actor Data
         string currActor = actor_list1[i].getActor();
+        int sPos = currActor.find('(');
+        int ePos = currActor.find(')');
+        if(sPos != string::npos && ePos != string::npos)
+            currActor.erase(sPos, ePos);
         replace(currActor.begin(), currActor.end(), '_', ' ');
+
+        // Movie Title Data
         string currMovie = actor_list1[i].getMovie();
         replace(currMovie.begin(), currMovie.end(), '_', ' ');
         if(currMovie.find('#') != string::npos || currMovie.find('{') != string::npos || currMovie.find("(TV)") != string::npos)
@@ -39,8 +47,48 @@ int main() {
         {
             int startPos = currMovie.find('(');
             int endPos = currMovie.find(')');
+
+            // Year Data
             string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
+
+            // Movie Title Data
             currMovie.erase(startPos, endPos);
+            if(currMovie.find(", The") != string::npos)
+            {
+                int stPos = currMovie.find(", The");
+                int phraseLen = 5;
+                string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
+                currMovie.erase(stPos, phraseLen);
+                currMovie.insert(0, currPhrase);
+            }
+            else if(currMovie.find(", A") != string::npos)
+            {
+                int stPos = currMovie.find(", A");
+                int phraseLen = 3;
+                string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
+                currMovie.erase(stPos, phraseLen);
+                currMovie.insert(0, currPhrase);
+            }
+            else if(currMovie.find(", An") != string::npos)
+            {
+                int stPos = currMovie.find(", An");
+                int phraseLen = 4;
+                string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
+                currMovie.erase(stPos, phraseLen);
+                currMovie.insert(0, currPhrase);
+            }
+            else if(currMovie.find(", La") != string::npos)
+            {
+                int stPos = currMovie.find(", La");
+                int phraseLen = 4;
+                string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
+                currMovie.erase(stPos, phraseLen);
+                currMovie.insert(0, currPhrase);
+            }
+
+            Movies1* m1 = new Movies1(currActor, currMovie, currYear, i % 10);
+            questions.push_back(*m1);
+
             cout
                 << "Movie: " << currMovie << endl
                 << "\tActor: " << currActor << endl
@@ -54,7 +102,21 @@ int main() {
     for (int j = 0; j < actor_list2.size(); j++)
     {
         string currActor = actor_list2[j].getActor();
+
+        int sPos = currActor.find('(');
+        int ePos = currActor.find(')');
+        if(sPos != string::npos && ePos != string::npos)
+            currActor.erase(sPos, ePos);
+
         replace(currActor.begin(), currActor.end(), '_', ' ');
+        if(currActor.find(",") != string::npos)
+        {
+            int stPos = currActor.find(",");
+            string currPhrase = currActor.substr(stPos + 2) + " ";
+            currActor.erase(stPos, currPhrase.length() + 1);
+            currActor.insert(0, currPhrase);
+        }
+
         string currMovie = actor_list2[j].getMovie();
         replace(currMovie.begin(), currMovie.end(), '_', ' ');
         int currRating = actor_list2[j].getMovieRating();
@@ -83,6 +145,10 @@ int main() {
                 int endPos = currMovie.find(')');
                 string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
                 currMovie.erase(startPos, endPos);
+
+                Movies2* m2 = new Movies2(currActor, currMovie, currGenres, currYear, to_string(currRating), j % 10);
+                questions.push_back(*m2);
+
                 cout
                 << "Movie: " << currMovie << endl
                 << "\tActor: " << currActor << endl
@@ -102,6 +168,9 @@ int main() {
         string currArtist = song_list[i].getArtist();
         string currDate = song_list[i].getReleaseDate();
         string currAlbum = song_list[i].getAlbumTitle();
+
+        Songs* s = new Songs(currTitle, currAlbum, currDate, currArtist, i % 10);
+        questions.push_back(*s);
         cout
                 << "Song: " << currTitle << endl
                 << "\tArtist: " << currArtist << endl
@@ -132,6 +201,10 @@ int main() {
         {
             currGenres += item + ", ";
         }
+
+        Books* b = new Books(currAuthors, currTitle, currLang, currGenres, k % 10);
+        questions.push_back(*b);
+
         cout
                 << "Title: " << currTitle << endl
                 << "\tAuthor: " << currAuthors << endl
@@ -155,6 +228,9 @@ int main() {
         string currTime = cities_list[i].getTimeZone();
         int currLat = cities_list[i].getLatitude();
         int currLong = cities_list[i].getLongitude();
+
+        Cities* c = new Cities(currCity, currState, currCountry, to_string(currPop), to_string(currEle), currTime, to_string(currLat), to_string(currLong), i % 10);
+        questions.push_back(*c);
         cout
                 << "City: " << currCity << endl
                 << "\tState: " << currState << endl
@@ -175,6 +251,7 @@ int main() {
 
     int total = count1 + count2 + count3 + count4 + count5;
     cout << "Total Count: " << total << endl;
+    cout << "Vector: " << questions.size() << endl;
 
     return 0;
 }
