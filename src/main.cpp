@@ -9,6 +9,7 @@ using namespace std;
 using namespace bridges;
 // hi sophia and adam!! hope y'all are well :)
 // we got this
+// im gonna explode
 
 int main() {
     Bridges bridges(1, "s-pappous", "1078662839858");
@@ -20,7 +21,7 @@ int main() {
     int count3 = 0;
     int count4 = 0;
 
-    cout << "IMDB1 Data:" << endl;
+    // cout << "IMDB1 Data:" << endl;
     vector<ActorMovieIMDB> actor_list1 = ds.getActorMovieIMDBData();
     for (int i = 0; i < actor_list1.size(); i++)
     {
@@ -35,9 +36,9 @@ int main() {
         }
         else
         {
-            cout
-                << "\tActor: " << currActor << endl
-                << "\tMovie: " << currMovie << "\n" << endl;
+            // cout
+            //     << "\tActor: " << currActor << endl
+            //     << "\tMovie: " << currMovie << "\n" << endl;
             count1++;
         }
     }
@@ -71,9 +72,9 @@ int main() {
             }
             else
             {
-                cout << "\tActor: " << currActor << endl
-                << "\tMovie: " << currMovie << endl
-                << "\tGenre: " << currGenres << "\n" << endl;
+                // cout << "\tActor: " << currActor << endl
+                // << "\tMovie: " << currMovie << endl
+                // << "\tGenre: " << currGenres << "\n" << endl;
                 count2++;
             }
         }
@@ -96,7 +97,11 @@ int main() {
     }
 
     cout << "Book Data:" << endl;
-    vector<GutenbergBook> books_list = ds.getGutenbergBookMetaData("en", "language");
+    vector<GutenbergBook> books_list;
+    for (int i = 1; i < 40; i++) {
+        books_list.push_back(ds.getGutenbergBookMetaData(i));
+    }
+    cout << "book size: " << books_list.size() << endl;
     for (int k = 0; k < books_list.size(); k++)
     {
         vector<string> allAuthors = books_list[k].getAuthors();
