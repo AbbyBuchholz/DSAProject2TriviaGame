@@ -15,18 +15,20 @@ void mergeM1(vector<Movies1>& qVector, int leftIndex, int midIndex, int rightInd
     // "First quadrant"
     int pt1Index = midIndex - leftIndex + 1;
     // "Third quadrant"
-    int pt2Index = rightIndex - midIndex + 1;
+    int pt2Index = rightIndex - midIndex;
     vector<Movies1> leftVector, rightVector;
 
-    for(int i = 0; i < pt1Index; i++)
+    for(int x = 0; x < pt1Index; x++)
     {
-        leftVector.push_back(qVector[leftIndex + i]);
+        leftVector.push_back(qVector[leftIndex + x]);
     }
-    for(int j = 0; j < pt2Index; j++)
+    for(int y = 0; y < pt2Index; y++)
     {
-        rightVector.push_back(qVector[midIndex + j]);
+        rightVector.push_back(qVector[midIndex + 1 + y]);
     }
-    int i = 0, j = 0, k = leftIndex;
+    int i = 0;
+    int j = 0;
+    int k = leftIndex;
     while(i < pt1Index && j < pt2Index)
     {
         if(leftVector[i].title < rightVector[j].title)
@@ -41,7 +43,7 @@ void mergeM1(vector<Movies1>& qVector, int leftIndex, int midIndex, int rightInd
         }
         else
         {
-            if(leftVector[i].actor <= rightVector[j].actor)
+            if(leftVector[i].actorLastName <= rightVector[j].actorLastName)
             {
                 qVector[k] = leftVector[i];
                 i++;
@@ -73,18 +75,20 @@ void mergeM2(vector<Movies2>& qVector, int leftIndex, int midIndex, int rightInd
     // "First quadrant"
     int pt1Index = midIndex - leftIndex + 1;
     // "Third quadrant"
-    int pt2Index = rightIndex - midIndex + 1;
+    int pt2Index = rightIndex - midIndex;
     vector<Movies2> leftVector, rightVector;
 
-    for(int i = 0; i < pt1Index; i++)
+    for(int x = 0; x < pt1Index; x++)
     {
-        leftVector.push_back(qVector[leftIndex + i]);
+        leftVector.push_back(qVector[leftIndex + x]);
     }
-    for(int j = 0; j < pt2Index; j++)
+    for(int y = 0; y < pt2Index; y++)
     {
-        rightVector.push_back(qVector[midIndex + j]);
+        rightVector.push_back(qVector[midIndex + 1 + y]);
     }
-    int i = 0, j = 0, k = leftIndex;
+    int i = 0;
+    int j = 0;
+    int k = leftIndex;
     while(i < pt1Index && j < pt2Index)
     {
         if(leftVector[i].title < rightVector[j].title)
@@ -99,7 +103,7 @@ void mergeM2(vector<Movies2>& qVector, int leftIndex, int midIndex, int rightInd
         }
         else
         {
-            if(leftVector[i].actor <= rightVector[j].actor)
+            if(leftVector[i].actorLastName <= rightVector[j].actorLastName)
             {
                 qVector[k] = leftVector[i];
                 i++;
@@ -131,18 +135,20 @@ void mergeSongs(vector<Songs>& qVector, int leftIndex, int midIndex, int rightIn
     // "First quadrant"
     int pt1Index = midIndex - leftIndex + 1;
     // "Third quadrant"
-    int pt2Index = rightIndex - midIndex + 1;
+    int pt2Index = rightIndex - midIndex;
     vector<Songs> leftVector, rightVector;
 
-    for(int i = 0; i < pt1Index; i++)
+    for(int x = 0; x < pt1Index; x++)
     {
-        leftVector.push_back(qVector[leftIndex + i]);
+        leftVector.push_back(qVector[leftIndex + x]);
     }
-    for(int j = 0; j < pt2Index; j++)
+    for(int y = 0; y < pt2Index; y++)
     {
-        rightVector.push_back(qVector[midIndex + j]);
+        rightVector.push_back(qVector[midIndex + 1 + y]);
     }
-    int i = 0, j = 0, k = leftIndex;
+    int i = 0;
+    int j = 0;
+    int k = leftIndex;
     while(i < pt1Index && j < pt2Index)
     {
         if(leftVector[i].title < rightVector[j].title)
@@ -189,18 +195,20 @@ void mergeBooks(vector<Books>& qVector, int leftIndex, int midIndex, int rightIn
     // "First quadrant"
     int pt1Index = midIndex - leftIndex + 1;
     // "Third quadrant"
-    int pt2Index = rightIndex - midIndex + 1;
+    int pt2Index = rightIndex - midIndex;
     vector<Books> leftVector, rightVector;
 
-    for(int i = 0; i < pt1Index; i++)
+    for(int x = 0; x < pt1Index; x++)
     {
-        leftVector.push_back(qVector[leftIndex + i]);
+        leftVector.push_back(qVector[leftIndex + x]);
     }
-    for(int j = 0; j < pt2Index; j++)
+    for(int y = 0; y < pt2Index; y++)
     {
-        rightVector.push_back(qVector[midIndex + j]);
+        rightVector.push_back(qVector[midIndex + 1 + y]);
     }
-    int i = 0, j = 0, k = leftIndex;
+    int i = 0;
+    int j = 0;
+    int k = leftIndex;
     while(i < pt1Index && j < pt2Index)
     {
         if(leftVector[i].title < rightVector[j].title)
@@ -215,7 +223,7 @@ void mergeBooks(vector<Books>& qVector, int leftIndex, int midIndex, int rightIn
         }
         else
         {
-            if(leftVector[i].author <= rightVector[j].author)
+            if(leftVector[i].authorLastName <= rightVector[j].authorLastName)
             {
                 qVector[k] = leftVector[i];
                 i++;
@@ -247,18 +255,20 @@ void mergeCities(vector<Cities>& qVector, int leftIndex, int midIndex, int right
     // "First quadrant"
     int pt1Index = midIndex - leftIndex + 1;
     // "Third quadrant"
-    int pt2Index = rightIndex - midIndex + 1;
+    int pt2Index = rightIndex - midIndex;
     vector<Cities> leftVector, rightVector;
 
-    for(int i = 0; i < pt1Index; i++)
+    for(int x = 0; x < pt1Index; x++)
     {
-        leftVector.push_back(qVector[leftIndex + i]);
+        leftVector.push_back(qVector[leftIndex + x]);
     }
-    for(int j = 0; j < pt2Index; j++)
+    for(int y = 0; y < pt2Index; y++)
     {
-        rightVector.push_back(qVector[midIndex + j]);
+        rightVector.push_back(qVector[midIndex + 1 + y]);
     }
-    int i = 0, j = 0, k = leftIndex;
+    int i = 0;
+    int j = 0;
+    int k = leftIndex;
     while(i < pt1Index && j < pt2Index)
     {
         if(leftVector[i].state < rightVector[j].state)
@@ -376,11 +386,18 @@ int main() {
         {
             // Actor Data
             string currActor = actor_list1[i].getActor();
+            string lastName = "";
             int sPos = currActor.find('(');
             int ePos = currActor.find(')');
             if(sPos != string::npos && ePos != string::npos)
-                currActor.erase(sPos, ePos);
+                currActor.erase(sPos - 1, ePos + 1);
             replace(currActor.begin(), currActor.end(), '_', ' ');
+            if(currActor.find(" ") != string::npos)
+            {
+                int stPos = currActor.find(" ");
+                lastName = currActor.substr(stPos + 1);
+                currActor.erase(stPos, lastName.length() + 1);
+            }
 
             // Movie Title Data
             string currMovie = actor_list1[i].getMovie();
@@ -433,12 +450,12 @@ int main() {
                     currMovie.insert(0, currPhrase);
                 }
 
-                Movies1* m1 = new Movies1(currActor, currMovie, currYear, j);
+                Movies1* m1 = new Movies1(currActor, lastName, currMovie, currYear, j);
                 qActor1.push_back(*m1);
 
                 cout
                     << "Movie: " << currMovie << endl
-                    << "\tActor: " << currActor << endl
+                    << "\tActor: " << currActor << " " << lastName << endl
                     << "\tYear: " << currYear << "\n" << endl;
                 count1 += 3;
             }
@@ -451,6 +468,7 @@ int main() {
         for (int j = 0; j < actor_list2.size(); j++)
         {
             string currActor = actor_list2[j].getActor();
+            string firstName = "";
 
             int sPos = currActor.find('(');
             int ePos = currActor.find(')');
@@ -461,9 +479,9 @@ int main() {
             if(currActor.find(",") != string::npos)
             {
                 int stPos = currActor.find(",");
-                string currPhrase = currActor.substr(stPos + 2) + " ";
-                currActor.erase(stPos, currPhrase.length() + 1);
-                currActor.insert(0, currPhrase);
+                firstName = currActor.substr(stPos + 2);
+                currActor.erase(stPos, firstName.length() + 1);
+                //currActor.insert(0, currPhrase);
             }
 
             string currMovie = actor_list2[j].getMovie();
@@ -495,12 +513,12 @@ int main() {
                     string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
                     currMovie.erase(startPos, endPos);
 
-                    Movies2* m2 = new Movies2(currActor, currMovie, currGenres, currYear, to_string(currRating), i);
+                    Movies2* m2 = new Movies2(firstName, currActor, currMovie, allGenres, currYear, to_string(currRating), i);
                     qActor2.push_back(*m2);
 
                     cout
                     << "Movie: " << currMovie << endl
-                    << "\tActor: " << currActor << endl
+                    << "\tActor: " << firstName << " " << currActor << endl
                     << "\tGenre: " << currGenres << endl
                     << "\tYear: " << currYear << endl
                     << "\tRating: " << currRating << "/10\n" << endl;
@@ -540,13 +558,21 @@ int main() {
         for (int k = 0; k < books_list.size(); k++)
         {
             string currTitle = books_list[k].getTitle();
+            string firstName = "";
+            string lastName = "";
 
             vector<string> allAuthors = books_list[k].getAuthors();
-            string currAuthors = "";
-            for(string item : allAuthors)
+            if(!allAuthors.empty())
             {
-                currAuthors += item + ", ";
+                lastName = allAuthors[0];
+                if(lastName.find(",") != string::npos)
+                {
+                    int stPos = lastName.find(",");
+                    firstName = lastName.substr(stPos + 2);
+                    lastName.erase(stPos, firstName.length() + 1);
+                }
             }
+
             string currLang = books_list[k].getLang();
             vector<string> allGenres = books_list[k].getGenres();
             string currGenres = "";
@@ -555,12 +581,12 @@ int main() {
                 currGenres += item + ", ";
             }
 
-            Books* b = new Books(currAuthors, currTitle, currLang, currGenres, j);
+            Books* b = new Books(firstName, lastName, currTitle, currLang, allGenres, j);
             qBook.push_back(*b);
 
             cout
                     << "Title: " << currTitle << endl
-                    << "\tAuthor: " << currAuthors << endl
+                    << "\tAuthor: " << firstName << " " << lastName << endl
                     << "\tLanguage: " << currLang << endl
                     << "\tGenres: " << currGenres << "\n" << endl;
             count4 += 2 + allAuthors.size() + allGenres.size();
