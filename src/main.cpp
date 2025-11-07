@@ -10,6 +10,347 @@ using namespace bridges;
 // hi sophia and adam!! hope y'all are well :)
 // we got this
 
+void mergeM1(vector<Movies1>& qVector, int leftIndex, int midIndex, int rightIndex)
+{
+    // "First quadrant"
+    int pt1Index = midIndex - leftIndex + 1;
+    // "Third quadrant"
+    int pt2Index = rightIndex - midIndex + 1;
+    vector<Movies1> leftVector, rightVector;
+
+    for(int i = 0; i < pt1Index; i++)
+    {
+        leftVector.push_back(qVector[leftIndex + i]);
+    }
+    for(int j = 0; j < pt2Index; j++)
+    {
+        rightVector.push_back(qVector[midIndex + j]);
+    }
+    int i = 0, j = 0, k = leftIndex;
+    while(i < pt1Index && j < pt2Index)
+    {
+        if(leftVector[i].title < rightVector[j].title)
+        {
+            qVector[k] = leftVector[i];
+            i++;
+        }
+        else if(leftVector[i].title > rightVector[j].title)
+        {
+            qVector[k] = rightVector[j];
+            j++;
+        }
+        else
+        {
+            if(leftVector[i].actor <= rightVector[j].actor)
+            {
+                qVector[k] = leftVector[i];
+                i++;
+            }
+            else
+            {
+                qVector[k] = rightVector[j];
+                j++;
+            }
+        }
+        k++;
+    }
+    while (i < pt1Index)
+    {
+        qVector[k] = leftVector[i];
+        i++;
+        k++;
+    }
+    while (j < pt2Index)
+    {
+        qVector[k] = rightVector[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeM2(vector<Movies2>& qVector, int leftIndex, int midIndex, int rightIndex)
+{
+    // "First quadrant"
+    int pt1Index = midIndex - leftIndex + 1;
+    // "Third quadrant"
+    int pt2Index = rightIndex - midIndex + 1;
+    vector<Movies2> leftVector, rightVector;
+
+    for(int i = 0; i < pt1Index; i++)
+    {
+        leftVector.push_back(qVector[leftIndex + i]);
+    }
+    for(int j = 0; j < pt2Index; j++)
+    {
+        rightVector.push_back(qVector[midIndex + j]);
+    }
+    int i = 0, j = 0, k = leftIndex;
+    while(i < pt1Index && j < pt2Index)
+    {
+        if(leftVector[i].title < rightVector[j].title)
+        {
+            qVector[k] = leftVector[i];
+            i++;
+        }
+        else if(leftVector[i].title > rightVector[j].title)
+        {
+            qVector[k] = rightVector[j];
+            j++;
+        }
+        else
+        {
+            if(leftVector[i].actor <= rightVector[j].actor)
+            {
+                qVector[k] = leftVector[i];
+                i++;
+            }
+            else
+            {
+                qVector[k] = rightVector[j];
+                j++;
+            }
+        }
+        k++;
+    }
+    while (i < pt1Index)
+    {
+        qVector[k] = leftVector[i];
+        i++;
+        k++;
+    }
+    while (j < pt2Index)
+    {
+        qVector[k] = rightVector[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSongs(vector<Songs>& qVector, int leftIndex, int midIndex, int rightIndex)
+{
+    // "First quadrant"
+    int pt1Index = midIndex - leftIndex + 1;
+    // "Third quadrant"
+    int pt2Index = rightIndex - midIndex + 1;
+    vector<Songs> leftVector, rightVector;
+
+    for(int i = 0; i < pt1Index; i++)
+    {
+        leftVector.push_back(qVector[leftIndex + i]);
+    }
+    for(int j = 0; j < pt2Index; j++)
+    {
+        rightVector.push_back(qVector[midIndex + j]);
+    }
+    int i = 0, j = 0, k = leftIndex;
+    while(i < pt1Index && j < pt2Index)
+    {
+        if(leftVector[i].title < rightVector[j].title)
+        {
+            qVector[k] = leftVector[i];
+            i++;
+        }
+        else if(leftVector[i].title > rightVector[j].title)
+        {
+            qVector[k] = rightVector[j];
+            j++;
+        }
+        else
+        {
+            if(leftVector[i].artist <= rightVector[j].artist)
+            {
+                qVector[k] = leftVector[i];
+                i++;
+            }
+            else
+            {
+                qVector[k] = rightVector[j];
+                j++;
+            }
+        }
+        k++;
+    }
+    while (i < pt1Index)
+    {
+        qVector[k] = leftVector[i];
+        i++;
+        k++;
+    }
+    while (j < pt2Index)
+    {
+        qVector[k] = rightVector[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeBooks(vector<Books>& qVector, int leftIndex, int midIndex, int rightIndex)
+{
+    // "First quadrant"
+    int pt1Index = midIndex - leftIndex + 1;
+    // "Third quadrant"
+    int pt2Index = rightIndex - midIndex + 1;
+    vector<Books> leftVector, rightVector;
+
+    for(int i = 0; i < pt1Index; i++)
+    {
+        leftVector.push_back(qVector[leftIndex + i]);
+    }
+    for(int j = 0; j < pt2Index; j++)
+    {
+        rightVector.push_back(qVector[midIndex + j]);
+    }
+    int i = 0, j = 0, k = leftIndex;
+    while(i < pt1Index && j < pt2Index)
+    {
+        if(leftVector[i].title < rightVector[j].title)
+        {
+            qVector[k] = leftVector[i];
+            i++;
+        }
+        else if(leftVector[i].title > rightVector[j].title)
+        {
+            qVector[k] = rightVector[j];
+            j++;
+        }
+        else
+        {
+            if(leftVector[i].author <= rightVector[j].author)
+            {
+                qVector[k] = leftVector[i];
+                i++;
+            }
+            else
+            {
+                qVector[k] = rightVector[j];
+                j++;
+            }
+        }
+        k++;
+    }
+    while (i < pt1Index)
+    {
+        qVector[k] = leftVector[i];
+        i++;
+        k++;
+    }
+    while (j < pt2Index)
+    {
+        qVector[k] = rightVector[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeCities(vector<Cities>& qVector, int leftIndex, int midIndex, int rightIndex)
+{
+    // "First quadrant"
+    int pt1Index = midIndex - leftIndex + 1;
+    // "Third quadrant"
+    int pt2Index = rightIndex - midIndex + 1;
+    vector<Cities> leftVector, rightVector;
+
+    for(int i = 0; i < pt1Index; i++)
+    {
+        leftVector.push_back(qVector[leftIndex + i]);
+    }
+    for(int j = 0; j < pt2Index; j++)
+    {
+        rightVector.push_back(qVector[midIndex + j]);
+    }
+    int i = 0, j = 0, k = leftIndex;
+    while(i < pt1Index && j < pt2Index)
+    {
+        if(leftVector[i].state < rightVector[j].state)
+        {
+            qVector[k] = leftVector[i];
+            i++;
+        }
+        else if(leftVector[i].state > rightVector[j].state)
+        {
+            qVector[k] = rightVector[j];
+            j++;
+        }
+        else
+        {
+            if(leftVector[i].name <= rightVector[j].name)
+            {
+                qVector[k] = leftVector[i];
+                i++;
+            }
+            else
+            {
+                qVector[k] = rightVector[j];
+                j++;
+            }
+        }
+        k++;
+    }
+    while (i < pt1Index)
+    {
+        qVector[k] = leftVector[i];
+        i++;
+        k++;
+    }
+    while (j < pt2Index)
+    {
+        qVector[k] = rightVector[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSortM1(vector<Movies1>& qVector, int left, int right)
+{
+    if(left < right)
+    {
+        int mid = left + (right - left) / 2;
+        mergeSortM1(qVector, left, mid);
+        mergeSortM1(qVector, mid + 1, right);
+        mergeM1(qVector, left, mid, right);
+    }
+}
+void mergeSortM2(vector<Movies2>& qVector, int left, int right)
+{
+    if(left < right)
+    {
+        int mid = left + (right - left) / 2;
+        mergeSortM2(qVector, left, mid);
+        mergeSortM2(qVector, mid + 1, right);
+        mergeM2(qVector, left, mid, right);
+    }
+}
+void mergeSortSongs(vector<Songs>& qVector, int left, int right)
+{
+    if(left < right)
+    {
+        int mid = left + (right - left) / 2;
+        mergeSortSongs(qVector, left, mid);
+        mergeSortSongs(qVector, mid + 1, right);
+        mergeSongs(qVector, left, mid, right);
+    }
+}
+void mergeSortBooks(vector<Books>& qVector, int left, int right)
+{
+    if(left < right)
+    {
+        int mid = left + (right - left) / 2;
+        mergeSortBooks(qVector, left, mid);
+        mergeSortBooks(qVector, mid + 1, right);
+        mergeBooks(qVector, left, mid, right);
+    }
+}
+void mergeSortCities(vector<Cities>& qVector, int left, int right)
+{
+    if(left < right)
+    {
+        int mid = left + (right - left) / 2;
+        mergeSortCities(qVector, left, mid);
+        mergeSortCities(qVector, mid + 1, right);
+        mergeCities(qVector, left, mid, right);
+    }
+}
+
 int main() {
     Bridges bridges(1, "s-pappous", "1078662839858");
     bridges.setTitle("Accessing Necessary Data");
@@ -22,6 +363,11 @@ int main() {
     int count5 = 0;
 
     vector<Question> questions;
+    vector<Movies1> qActor1;
+    vector<Movies2> qActor2;
+    vector<Songs> qSong;
+    vector<Books> qBook;
+    vector<Cities> qCity;
 
     cout << "IMDB1 Data:" << endl;
     vector<ActorMovieIMDB> actor_list1 = ds.getActorMovieIMDBData();
@@ -88,7 +434,7 @@ int main() {
                 }
 
                 Movies1* m1 = new Movies1(currActor, currMovie, currYear, j);
-                questions.push_back(*m1);
+                qActor1.push_back(*m1);
 
                 cout
                     << "Movie: " << currMovie << endl
@@ -150,7 +496,7 @@ int main() {
                     currMovie.erase(startPos, endPos);
 
                     Movies2* m2 = new Movies2(currActor, currMovie, currGenres, currYear, to_string(currRating), i);
-                    questions.push_back(*m2);
+                    qActor2.push_back(*m2);
 
                     cout
                     << "Movie: " << currMovie << endl
@@ -175,7 +521,7 @@ int main() {
             string currAlbum = song_list[i].getAlbumTitle();
 
             Songs* s = new Songs(currTitle, currAlbum, currDate, currArtist, j);
-            questions.push_back(*s);
+            qSong.push_back(*s);
             cout
                     << "Song: " << currTitle << endl
                     << "\tArtist: " << currArtist << endl
@@ -210,7 +556,7 @@ int main() {
             }
 
             Books* b = new Books(currAuthors, currTitle, currLang, currGenres, j);
-            questions.push_back(*b);
+            qBook.push_back(*b);
 
             cout
                     << "Title: " << currTitle << endl
@@ -239,7 +585,7 @@ int main() {
             int currLong = cities_list[i].getLongitude();
 
             Cities* c = new Cities(currCity, currState, currCountry, to_string(currPop), to_string(currEle), currTime, to_string(currLat), to_string(currLong), j);
-            questions.push_back(*c);
+            qCity.push_back(*c);
             cout
                     << "City: " << currCity << endl
                     << "\tState: " << currState << endl
