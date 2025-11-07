@@ -26,11 +26,12 @@ class Books: public Question {
         Books() {
             category = "Books";
         }
-        string author;
+        string authorFirstName;
+        string authorLastName;
         string title;
         string language;
-        string genre;
-        Books(string a, string t, string l, string g, int v);
+        vector<string> genre;
+        Books(string aFN, string aLN, string t, string l, vector<string> g, int v);
         void createQuestion();
 };
 
@@ -57,10 +58,11 @@ class Movies1: public Question {
         Movies1() {
             category = "Movies";
         }
-        string actor;
+        string actorFirstName;
+        string actorLastName;
         string title;
         string year;
-        Movies1(string a, string t, string y, int v);
+        Movies1(string aFN, string aLN, string t, string y, int v);
         string decideSubCategory();
         void createQuestion();
 };
@@ -70,12 +72,13 @@ class Movies2: public Question {
         Movies2() {
             category = "Movies";
         }
-        string actor;
+        string actorFirstName;
+        string actorLastName;
         string title;
-        string genre;
+        vector<string> genre;
         string year;
         string rating;
-        Movies2(string a, string t, string g, string y, string r, int v);
+        Movies2(string aFN, string aLN, string t, vector<string> g, string y, string r, int v);
         string decideSubCategory();
         void createQuestion();
 };
@@ -96,52 +99,53 @@ class Songs: public Question {
 };
 
 
-Books::Books(string a, string t, string l, string g, int v) {
+Books::Books(string aFN, string aLN, string t, string l, vector<string> g, int v) {
     category = "Books";
-    author = a;
+    authorFirstName = aFN;
+    authorLastName = aLN;
     title = t;
     language = l;
     genre = g;
     subcategory = "author";
     variation = v;
-    details.push_back(author);
-    details.push_back(title);
-    details.push_back(language);
-    details.push_back(genre);
+    // details.push_back(author);
+    // details.push_back(title);
+    // details.push_back(language);
+    // details.push_back(genre);
     createQuestion();
 }
 
 void Books::createQuestion() {
     if (variation == 1) {
-        question = "This" + author + " wrote the " + language + " language book " + title + ". What genre is it in?";
-        answer = genre;
+        // question = "This" + author + " wrote the " + language + " language book " + title + ". What genre is it in?";
+        // answer = genre;
     } else if (variation == 2) {
         question = "Who wrote " + title + "?";
-        answer = author;
+        answer = authorFirstName + authorLastName;
     } else if (variation == 3) {
-        question = "What language is " + title + " by " + author + "in?";
+        question = "What language is " + title + " by " + authorFirstName + authorLastName + "in?";
         answer = language;
     } else if (variation == 4) {
-        question = "What book did " + author + " write?";
+        question = "What book did " + authorFirstName + authorLastName + " write?";
         answer = title;
     } else if (variation == 5) {
-        question = title + ",  a seminal work in the" + genre + " genre, was written by which author?";
-        answer = author;
+        question = title + ",  a seminal work in the" + genre[0] + " genre, was written by which author?";
+        answer = authorFirstName + authorLastName;
     } else if (variation == 6) {
-        question = "Who wrote the " + genre + title + "?";
-        answer = author;
+        question = "Who wrote the " + genre[0] + title + "?";
+        answer = authorFirstName + authorLastName;
     } else if (variation == 7) {
-        question = "What famous " + genre + " was written by " + author + "?";
+        question = "What famous " + genre[0] + " was written by " + authorFirstName + authorLastName; + "?";
         answer = title;
     } else if (variation == 8) {
         question = title + " was written by whom?";
-        answer = author;
+        answer = authorFirstName + authorLastName;
     } else if (variation == 9) {
-        question = "What genre is " + title + "?";
-        answer = genre;
+        // question = "What genre is " + title + "?";
+        // answer = genre;
     } else if (variation == 10) {
         question = "What eloquent orator wrote the masterpiece " + title + "?";
-        answer = author;
+        answer = authorFirstName + authorLastName;
     }
 }
 
@@ -203,16 +207,17 @@ void Cities::createQuestion() {
     }
 }
 
-Movies1::Movies1(string a, string t, string y, int v) {
+Movies1::Movies1(string aFN, string aLN, string t, string y, int v) {
     category = "Movies";
-    actor = a;
+    actorFirstName = aFN;
+    actorLastName = aLN;
     title = t;
     year = y;
     variation = v;
     subcategory = decideSubCategory();
-    details.push_back(actor);
-    details.push_back(title);
-    details.push_back(year);
+    // details.push_back(actor);
+    // details.push_back(title);
+    // details.push_back(year);
 }
 
 string Movies1::decideSubCategory() {
@@ -221,52 +226,53 @@ string Movies1::decideSubCategory() {
 
 void Movies1::createQuestion() {
     if (variation == 1) {
-        question = "What year did " + title + "starring " + actor + "come out?";
+        question = "What year did " + title + "starring " + actorFirstName + actorLastName + "come out?";
         answer = year;
     } else if (variation == 2) {
-        question = "What movie did " + actor + " star in " + year + "?";
+        question = "What movie did " + actorFirstName + actorLastName + " star in " + year + "?";
         answer = title;
     } else if (variation == 3) {
         question = "What year did " + title + " release?";
         answer = year;
     } else if (variation == 4) {
-        question = "What film did " + actor + " perform in " + year + "?";
+        question = "What film did " + actorFirstName + actorLastName + " perform in " + year + "?";
         answer = title;
     } else if (variation == 5) {
-        question = "In " + year + ", what movie did " + actor + "appear in?";
+        question = "In " + year + ", what movie did " + actorFirstName + actorLastName + "appear in?";
         answer = title;
     } else if (variation == 6) {
         question = "In " + title + " (" + year + "), which actor has a notable appearance?";
-        answer = actor;
+        answer = actorFirstName + actorLastName;
     } else if (variation == 7) {
-        question = actor + " notably appears in what movie from " + year + "?";
+        question = actorFirstName + actorLastName + " notably appears in what movie from " + year + "?";
         answer = title;
     } else if (variation == 8) {
-        question = actor + " appears in " + title + " in which year?";
+        question = actorFirstName + actorLastName + " appears in " + title + " in which year?";
         answer = year;
     } else if (variation == 9) {
-        question = "You’re a time traveler in the year" + year + "and just got invited to the movie starring" + actor + ". Which movie are you seeing?";
+        question = "You’re a time traveler in the year" + year + "and just got invited to the movie starring" + actorFirstName + actorLastName + ". Which movie are you seeing?";
         answer = title;
     } else if (variation == 10) {
-        question = "You’re a time traveler who doesn’t know what year it is and just got invited to the movie" + title + "starring" + actor + ". What year are you in?";
+        question = "You’re a time traveler who doesn’t know what year it is and just got invited to the movie" + title + "starring" + actorFirstName + actorLastName + ". What year are you in?";
         answer = year;
     }
 }
 
-Movies2::Movies2(string a, string t, string g, string y, string r, int v) {
+Movies2::Movies2(string aFN, string aLN, string t, vector<string> g, string y, string r, int v) {
     category = "Movies";
-    actor = a;
+    actorFirstName = aFN;
+    actorLastName = aLN;
     title = t;
     genre = g;
     year = y;
     rating = r;
     variation = v;
     subcategory = decideSubCategory();
-    details.push_back(actor);
-    details.push_back(title);
-    details.push_back(genre);
-    details.push_back(year);
-    details.push_back(rating);
+    // details.push_back(actor);
+    // details.push_back(title);
+    // details.push_back(genre);
+    // details.push_back(year);
+    // details.push_back(rating);
 }
 
 string Movies2::decideSubCategory() {
@@ -275,34 +281,34 @@ string Movies2::decideSubCategory() {
 
 void Movies2::createQuestion() {
     if (variation == 1) {
-        question = "What year did " + title + "starring " + actor + "come out?";
+        question = "What year did " + title + "starring " + actorFirstName + actorLastName + "come out?";
         answer = year;
     } else if (variation == 2) {
-        question = "What movie did " + actor + " star in " + year + "?";
+        question = "What movie did " + actorFirstName + actorLastName + " star in " + year + "?";
         answer = title;
     } else if (variation == 3) {
         question = "What year did " + title + " release?";
         answer = year;
     } else if (variation == 4) {
-        question = "What film did " + actor + " perform in " + year + "?";
+        question = "What film did " + actorFirstName + actorLastName + " perform in " + year + "?";
         answer = title;
     } else if (variation == 5) {
-        question = "What " + rating + " movie from the year" + year + " did " + actor + "star in?";
-        answer = actor;
+        question = "What " + rating + " movie from the year" + year + " did " + actorFirstName + actorLastName + "star in?";
+        answer = actorFirstName + actorLastName;
     } else if (variation == 6) {
         question = "What rating does " + title + "have?";
         answer = rating;
     } else if (variation == 7) {
-        question = "What genre is" + title + "starring " + actor + "?";
-        answer = genre;
+        // question = "What genre is" + title + "starring " + actor + "?";
+        // answer = genre;
     } else if (variation == 8) {
-        question = "What movie stars " + actor + ", is a " + genre + ", came out in " + year + ", and has a rating of " + rating + "?";
+        question = "What movie stars " + actorFirstName + actorLastName + ", is a " + genre[0] + ", came out in " + year + ", and has a rating of " + rating + "?";
         answer = title;
     } else if (variation == 9) {
-        question = "In " + year + ", what movie did " + actor + "appear in?";
+        question = "In " + year + ", what movie did " + actorFirstName + actorLastName + "appear in?";
         answer = year;
     } else if (variation == 10) {
-        question = "What movie starring " + actor + " released in " + year + "?";
+        question = "What movie starring " + actorFirstName + actorLastName + " released in " + year + "?";
         answer = title;
     }
 }
