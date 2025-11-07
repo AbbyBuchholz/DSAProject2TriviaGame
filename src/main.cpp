@@ -69,7 +69,6 @@ void mergeM1(vector<Movies1>& qVector, int leftIndex, int midIndex, int rightInd
         k++;
     }
 }
-
 void mergeM2(vector<Movies2>& qVector, int leftIndex, int midIndex, int rightIndex)
 {
     // "First quadrant"
@@ -129,7 +128,6 @@ void mergeM2(vector<Movies2>& qVector, int leftIndex, int midIndex, int rightInd
         k++;
     }
 }
-
 void mergeSongs(vector<Songs>& qVector, int leftIndex, int midIndex, int rightIndex)
 {
     // "First quadrant"
@@ -189,7 +187,6 @@ void mergeSongs(vector<Songs>& qVector, int leftIndex, int midIndex, int rightIn
         k++;
     }
 }
-
 void mergeBooks(vector<Books>& qVector, int leftIndex, int midIndex, int rightIndex)
 {
     // "First quadrant"
@@ -249,7 +246,6 @@ void mergeBooks(vector<Books>& qVector, int leftIndex, int midIndex, int rightIn
         k++;
     }
 }
-
 void mergeCities(vector<Cities>& qVector, int leftIndex, int midIndex, int rightIndex)
 {
     // "First quadrant"
@@ -358,6 +354,43 @@ void mergeSortCities(vector<Cities>& qVector, int left, int right)
         mergeSortCities(qVector, left, mid);
         mergeSortCities(qVector, mid + 1, right);
         mergeCities(qVector, left, mid, right);
+    }
+}
+
+int partitionM1(vector<Movies1>& qVector, int low, int high)
+{
+    string pivot = qVector[(low + high)/2].title;
+    string altPivot = qVector[(low + high)/2].title;
+    int up = low, down = high;
+
+    while (up < down)
+    {
+        for(int i = up; i < down; i++)
+        {
+            if(qVector[up].title > pivot)
+                break;
+            up++;
+        }
+        for(int j = high; j > low; j--)
+        {
+            if(qVector[j].title < pivot)
+                break;
+            down--;
+        }
+        if(up < down)
+            swap(qVector[low], qVector[down]);
+    }
+    swap(qVector[low], qVector[down]);
+    return down;
+}
+
+void quickSortM1(vector<Movies1>& qVector, int low, int high)
+{
+    if(low < high)
+    {
+        int pivot = partitionM1(qVector, low, high);
+        quickSortM1(qVector, low, pivot - 1);
+        quickSortM1(qVector, pivot + 1, high);
     }
 }
 
@@ -625,11 +658,23 @@ int main() {
         }
     }
 
-    mergeSortM1(qActor1, 0, qActor1.size());
-    mergeSortM2(qActor2, 0, qActor2.size());
-    mergeSortSongs(qSong, 0, qSong.size());
-    mergeSortBooks(qBook, 0, qBook.size());
-    mergeSortCities(qCity, 0, qCity.size());
+    bool isMergeSort = false;
+    if(isMergeSort)
+    {
+        mergeSortM1(qActor1, 0, qActor1.size() - 1);
+        mergeSortM2(qActor2, 0, qActor2.size() - 1);
+        mergeSortSongs(qSong, 0, qSong.size() - 1);
+        mergeSortBooks(qBook, 0, qBook.size() - 1);
+        mergeSortCities(qCity, 0, qCity.size() - 1);
+    }
+    else
+    {
+        quickSortM1(qActor1, 0, qActor1.size() - 1);
+        quickSortM2(qActor2, 0, qActor2.size() - 1);
+        quickSortSongs(qSong, 0, qSong.size() - 1);
+        quickSortBooks(qBook, 0, qBook.size() - 1);
+        quickSortCities(qCity, 0, qCity.size() - 1);
+    }
 
     questions.insert(questions.end(), qActor1.begin(), qActor1.end());
     questions.insert(questions.end(), qActor2.begin(), qActor2.end());
