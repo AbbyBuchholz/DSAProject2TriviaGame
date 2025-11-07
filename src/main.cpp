@@ -599,6 +599,18 @@ int main() {
         }
     }
 
+    mergeSortM1(qActor1, 0, qActor1.size());
+    mergeSortM2(qActor2, 0, qActor2.size());
+    mergeSortSongs(qSong, 0, qSong.size());
+    mergeSortBooks(qBook, 0, qBook.size());
+    mergeSortCities(qCity, 0, qCity.size());
+
+    questions.insert(questions.end(), qActor1.begin(), qActor1.end());
+    questions.insert(questions.end(), qActor2.begin(), qActor2.end());
+    questions.insert(questions.end(), qSong.begin(), qSong.end());
+    questions.insert(questions.end(), qBook.begin(), qBook.end());
+    questions.insert(questions.end(), qCity.begin(), qCity.end());
+
     cout << "IMDB 1 Count: " << count1 << endl;
     cout << "IMDB 2 Count: " << count2 << endl;
     cout << "Song Count: " << count3 << endl;
