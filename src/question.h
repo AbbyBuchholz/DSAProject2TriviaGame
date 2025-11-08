@@ -202,7 +202,7 @@ void Cities::createQuestion() {
         question = "What state is at the latitude of " + latitude + " and the longitude of " + longitude + " and at an elevation of " + elevation + " and has the city " + name + "?";
         answer = state;
     } else if (variation == 10) {
-        question = "If" + name + " is at longitude " + longitude + ", what time zone is it in?";
+        question = "If " + name + " is at longitude " + longitude + ", what time zone is it in?";
         answer = timeZone;
     }
 }
