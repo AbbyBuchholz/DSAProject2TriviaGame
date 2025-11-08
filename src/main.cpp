@@ -4,6 +4,14 @@
 #include "BSTElement.h"
 #include <queue>
 #include <list>
+#include <fstream>
+#include <random>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+
+const string filename = "questions.txt";
+
 using namespace std;
 
 using namespace bridges;
@@ -538,7 +546,7 @@ void quickSortCities(vector<Cities>& qVector, int low, int high)
     }
 }
 
-int main() {
+vector<Question> createData(bool isMergeSort, bool isQuickSort) {
     Bridges bridges(1, "s-pappous", "1078662839858");
     bridges.setTitle("Accessing Necessary Data");
     DataSource ds (&bridges);
@@ -812,7 +820,6 @@ int main() {
 
     // Decides whether to do mergeSort or quickSort based on what setting is on.
 
-    bool isMergeSort = false;
     if(isMergeSort)
     {
         mergeSortM1(qActor1, 0, qActor1.size() - 1);
@@ -821,7 +828,7 @@ int main() {
         mergeSortBooks(qBook, 0, qBook.size() - 1);
         mergeSortCities(qCity, 0, qCity.size() - 1);
     }
-    else
+    if(isQuickSort)
     {
         quickSortM1(qActor1, 0, qActor1.size() - 1);
         quickSortM2(qActor2, 0, qActor2.size() - 1);
@@ -830,8 +837,8 @@ int main() {
         quickSortCities(qCity, 0, qCity.size() - 1);
     }
 
-    // Inserts all sorted questions into the question bank
 
+    // Inserts all sorted questions into the question bank
     questions.insert(questions.end(), qActor1.begin(), qActor1.end());
     questions.insert(questions.end(), qActor2.begin(), qActor2.end());
     questions.insert(questions.end(), qSong.begin(), qSong.end());
@@ -847,6 +854,83 @@ int main() {
     int total = count1 + count2 + count3 + count4 + count5;
     cout << "Total Count: " << total << endl;
     cout << "Vector: " << questions.size() << endl;
+    return questions;
+}
+
+//code to transfer the data to the frontend!
+//It also utilizes a .txt to prevent loading 100,000 data points every time
+int main(int argc, char** argv) {
+    ifstream infile(filename);
+    string userInput;
+    if (argc > 1) {
+        userInput = argv[1];
+    } else {
+        userInput = "";
+    }
+    std::random_device rd;
+    std::mt19937 g(rd());
+
+    if (!infile.good() || (userInput == "randomize")) { //randomize the data
+        ofstream outfile(filename, ios::trunc);
+        vector<Question> questions = createData(false, false);
+        shuffle(questions.begin(), questions.end(), g);
+        for (int i = 0; i < questions.size(); i++) {
+            outfile << questions[i].question << "|" << questions[i].answer << "|" << questions[i].category <<endl;
+        }
+        cout << "Successfully created questions!";
+        outfile.close();
+    }
+    if (userInput == "mergeSort") {
+        ofstream outfile(filename, ios::trunc);
+        vector<Question> questions = createData(true, false);
+        shuffle(questions.begin(), questions.end(), g);
+        for (int i = 0; i < questions.size(); i++) {
+            outfile << questions[i].question << "|" << questions[i].answer << "|" << questions[i].category << endl;
+        }
+        cout << "Successfully created questions!";
+        outfile.close();
+    }
+    if (userInput == "quickSort") {
+        ofstream outfile(filename, ios::trunc);
+        vector<Question> questions = createData(false, true);
+        for (int i = 0; i < questions.size(); i++) {
+            outfile << questions[i].question << "|" << questions[i].answer << "|" << questions[i].category << endl;
+        }
+        cout << "Successfully created questions!";
+        outfile.close();
+    }
+    if (userInput == "next") {
+        struct QuestionStruct {
+            string question;
+            string answer;
+            string category;
+        };
+        vector<QuestionStruct> questions;
+        string line;
+
+        while (getline(infile, line)) {
+            size_t firstDelimiter = line.find("|");
+            size_t secondDelimiter = line.find("|", firstDelimiter + 1);
+
+            if (firstDelimiter != string::npos && secondDelimiter != string::npos) {
+                string question = line.substr(0, firstDelimiter);
+                string answer = line.substr(firstDelimiter + 1, secondDelimiter - firstDelimiter - 1);
+                string category = line.substr(secondDelimiter + 1);
+                if (!question.empty() && !answer.empty() && !category.empty()) {
+                    questions.push_back({question,answer,category});
+                }
+            }
+
+        }
+        infile.close();
+
+        srand(static_cast<unsigned int>(time(nullptr)));
+        int idx = rand() % questions.size();
+
+        QuestionStruct selected = questions[idx];
+        cout << selected.question << "|" << selected.answer << "|" << selected.category << endl;
+        return 0;
+    }
 
     return 0;
 }
