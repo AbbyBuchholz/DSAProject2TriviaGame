@@ -9,5 +9,6 @@ link_directories({CMAKE_CURRENT_SOURCE_DIR}/../libraries/bridges/lib)
 include_directories({CMAKE_CURRENT_SOURCE_DIR}/../libraries/curl/include)
 link_directories({CMAKE_CURRENT_SOURCE_DIR}/../libraries/curl/lib)
 
-add_executable(DSAProject2TriviaGame src/main.cpp src/question.h)
+add_executable(DSAProject2TriviaGame src/main.cpp src/question.h
+        src/sort.cpp)
 target_link_libraries(DSAProject2TriviaGame libcurl.lib)

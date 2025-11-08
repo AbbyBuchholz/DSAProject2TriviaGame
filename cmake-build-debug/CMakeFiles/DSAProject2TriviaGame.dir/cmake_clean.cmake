@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj"
+  "CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj.d"
   "CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj"
   "CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj.d"
   "DSAProject2TriviaGame.exe"
