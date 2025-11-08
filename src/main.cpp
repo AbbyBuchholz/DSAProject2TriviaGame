@@ -10,6 +10,7 @@ using namespace bridges;
 // hi sophia and adam!! hope y'all are well :)
 // we got this
 
+// the merge functions that merge the split vectors (does the actual sorting)
 void mergeM1(vector<Movies1>& qVector, int leftIndex, int midIndex, int rightIndex)
 {
     // "First quadrant"
@@ -306,6 +307,7 @@ void mergeCities(vector<Cities>& qVector, int leftIndex, int midIndex, int right
     }
 }
 
+// The original mergesort functions that keep splitting up the vectors
 void mergeSortM1(vector<Movies1>& qVector, int left, int right)
 {
     if(left < right)
@@ -357,40 +359,182 @@ void mergeSortCities(vector<Cities>& qVector, int left, int right)
     }
 }
 
-int partitionM1(vector<Movies1>& qVector, int low, int high)
+// These functions are used to compare ideal data, and if they're equal, they go to secondary data to compare & sort.
+bool compareQuickSortM1(Movies1& ele, Movies1& pivot)
 {
-    string pivot = qVector[(low + high)/2].title;
-    string altPivot = qVector[(low + high)/2].title;
-    int up = low, down = high;
-
-    while (up < down)
+    if(ele.title == pivot.title)
     {
-        for(int i = up; i < down; i++)
-        {
-            if(qVector[up].title > pivot)
-                break;
-            up++;
-        }
-        for(int j = high; j > low; j--)
-        {
-            if(qVector[j].title < pivot)
-                break;
-            down--;
-        }
-        if(up < down)
-            swap(qVector[low], qVector[down]);
+        return ele.actorLastName < pivot.actorLastName;
     }
-    swap(qVector[low], qVector[down]);
-    return down;
+    return ele.title < pivot.title;
+}
+bool compareQuickSortM2(Movies2& ele, Movies2& pivot)
+{
+    if(ele.title == pivot.title)
+    {
+        return ele.actorLastName < pivot.actorLastName;
+    }
+    return ele.title < pivot.title;
+}
+bool compareQuickSortSongs(Songs& ele, Songs& pivot)
+{
+    if(ele.title == pivot.title)
+    {
+        return ele.artist < pivot.artist;
+    }
+    return ele.title < pivot.title;
+}
+bool compareQuickSortBooks(Books& ele, Books& pivot)
+{
+    if(ele.title == pivot.title)
+    {
+        return ele.authorLastName < pivot.authorLastName;
+    }
+    return ele.title < pivot.title;
+}
+bool compareQuickSortCities(Cities& ele, Cities& pivot)
+{
+    if(ele.state == pivot.state)
+    {
+        return ele.name < pivot.name;
+    }
+    return ele.state < pivot.state;
 }
 
+// The original quickSort functions using the middle element as a partition
 void quickSortM1(vector<Movies1>& qVector, int low, int high)
 {
-    if(low < high)
+    Movies1 pivot = qVector[(low + (high-low)/2)];
+    int up = low, down = high;
+    while (up <= down)
     {
-        int pivot = partitionM1(qVector, low, high);
-        quickSortM1(qVector, low, pivot - 1);
-        quickSortM1(qVector, pivot + 1, high);
+        while(compareQuickSortM1(qVector[up], pivot))
+            up++;
+        while(compareQuickSortM1(pivot, qVector[down]))
+            down--;
+        if(up <= down)
+        {
+            swap(qVector[up], qVector[down]);
+            up++;
+            down--;
+        }
+    }
+
+    if(low < down)
+    {
+        quickSortM1(qVector, low, down);
+    }
+    if(up < high)
+    {
+        quickSortM1(qVector, up, high);
+    }
+}
+void quickSortM2(vector<Movies2>& qVector, int low, int high)
+{
+    Movies2 pivot = qVector[(low + (high-low)/2)];
+    int up = low, down = high;
+    while (up <= down)
+    {
+        while(compareQuickSortM2(qVector[up], pivot))
+            up++;
+        while(compareQuickSortM2(pivot, qVector[down]))
+            down--;
+        if(up <= down)
+        {
+            swap(qVector[up], qVector[down]);
+            up++;
+            down--;
+        }
+    }
+
+    if(low < down)
+    {
+        quickSortM2(qVector, low, down);
+    }
+    if(up < high)
+    {
+        quickSortM2(qVector, up, high);
+    }
+}
+void quickSortSongs(vector<Songs>& qVector, int low, int high)
+{
+    Songs pivot = qVector[(low + (high-low)/2)];
+    int up = low, down = high;
+    while (up <= down)
+    {
+        while(compareQuickSortSongs(qVector[up], pivot))
+            up++;
+        while(compareQuickSortSongs(pivot, qVector[down]))
+            down--;
+        if(up <= down)
+        {
+            swap(qVector[up], qVector[down]);
+            up++;
+            down--;
+        }
+    }
+
+    if(low < down)
+    {
+        quickSortSongs(qVector, low, down);
+    }
+    if(up < high)
+    {
+        quickSortSongs(qVector, up, high);
+    }
+}
+void quickSortBooks(vector<Books>& qVector, int low, int high)
+{
+    Books pivot = qVector[(low + (high-low)/2)];
+    int up = low, down = high;
+    while (up <= down)
+    {
+        while(compareQuickSortBooks(qVector[up], pivot))
+            up++;
+        while(compareQuickSortBooks(pivot, qVector[down]))
+            down--;
+        if(up <= down)
+        {
+            swap(qVector[up], qVector[down]);
+            up++;
+            down--;
+        }
+    }
+
+    if(low < down)
+    {
+        quickSortBooks(qVector, low, down);
+    }
+    if(up < high)
+    {
+        quickSortBooks(qVector, up, high);
+    }
+}
+void quickSortCities(vector<Cities>& qVector, int low, int high)
+{
+    Cities pivot = qVector[(low + (high-low)/2)];
+    int up = low, down = high;
+    while (up <= down)
+    {
+        while(compareQuickSortCities(qVector[up], pivot))
+            up++;
+        while(compareQuickSortCities(pivot, qVector[down]))
+            down--;
+        if(up <= down)
+        {
+            swap(qVector[up], qVector[down]);
+            up++;
+            down--;
+        }
+    }
+
+    if(low < down)
+    {
+        quickSortCities(qVector, low, down);
+    }
+    if(up < high)
+    {
+        quickSortCities(qVector, up, high);
     }
 }
 
@@ -500,6 +644,7 @@ int main() {
     for (int i = 0; i <= 10; i++) {
         for (int j = 0; j < actor_list2.size(); j++)
         {
+            // Actor Name Data
             string currActor = actor_list2[j].getActor();
             string firstName = "";
 
@@ -514,13 +659,14 @@ int main() {
                 int stPos = currActor.find(",");
                 firstName = currActor.substr(stPos + 2);
                 currActor.erase(stPos, firstName.length() + 1);
-                //currActor.insert(0, currPhrase);
             }
 
+            // Movie Title Data
             string currMovie = actor_list2[j].getMovie();
             replace(currMovie.begin(), currMovie.end(), '_', ' ');
+            // Rating Data
             int currRating = actor_list2[j].getMovieRating();
-
+            // Movie Title Data
             if(currMovie.find('#') != string::npos || currMovie.find('{') != string::npos || currMovie.find("(TV)") != string::npos)
             {
                 actor_list2.erase(actor_list2.begin());
@@ -528,6 +674,7 @@ int main() {
             }
             else
             {
+                // Genre Data
                 vector<string> allGenres = actor_list2[j].getGenres();
                 string currGenres = "";
                 for(string item : allGenres)
@@ -541,6 +688,7 @@ int main() {
                 }
                 else
                 {
+                    // Year Data
                     int startPos = currMovie.find('(');
                     int endPos = currMovie.find(')');
                     string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
@@ -590,10 +738,12 @@ int main() {
     for (int j = 1; j <= 10; j++) {
         for (int k = 0; k < books_list.size(); k++)
         {
+            // Book Title Data
             string currTitle = books_list[k].getTitle();
             string firstName = "";
             string lastName = "";
 
+            // Gets the main author and sets it as the author.
             vector<string> allAuthors = books_list[k].getAuthors();
             if(!allAuthors.empty())
             {
@@ -606,7 +756,9 @@ int main() {
                 }
             }
 
+            // Language Data
             string currLang = books_list[k].getLang();
+            // Book Genre Data
             vector<string> allGenres = books_list[k].getGenres();
             string currGenres = "";
             for(string item : allGenres)
@@ -658,6 +810,8 @@ int main() {
         }
     }
 
+    // Decides whether to do mergeSort or quickSort based on what setting is on.
+
     bool isMergeSort = false;
     if(isMergeSort)
     {
@@ -675,6 +829,8 @@ int main() {
         quickSortBooks(qBook, 0, qBook.size() - 1);
         quickSortCities(qCity, 0, qCity.size() - 1);
     }
+
+    // Inserts all sorted questions into the question bank
 
     questions.insert(questions.end(), qActor1.begin(), qActor1.end());
     questions.insert(questions.end(), qActor2.begin(), qActor2.end());
