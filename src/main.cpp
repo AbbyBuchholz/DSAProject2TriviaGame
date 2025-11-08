@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
+#include <chrono>
 
 const string filename = "questions.txt";
 
@@ -824,19 +825,27 @@ vector<Question> createData(bool isMergeSort, bool isQuickSort) {
 
     if(isMergeSort)
     {
+        auto mergeStart = chrono::high_resolution_clock::now();
         mergeSortM1(qActor1, 0, qActor1.size() - 1);
         mergeSortM2(qActor2, 0, qActor2.size() - 1);
         mergeSortSongs(qSong, 0, qSong.size() - 1);
         mergeSortBooks(qBook, 0, qBook.size() - 1);
         mergeSortCities(qCity, 0, qCity.size() - 1);
+        auto mergeEnd = chrono::high_resolution_clock::now();
+        chrono::duration<double> mergeTime = mergeEnd - mergeStart;
+        cout << "Merge Sort Time: " << mergeTime.count() << " seconds." << endl;
     }
     if(isQuickSort)
     {
+        auto quickStart = chrono::high_resolution_clock::now();
         quickSortM1(qActor1, 0, qActor1.size() - 1);
         quickSortM2(qActor2, 0, qActor2.size() - 1);
         quickSortSongs(qSong, 0, qSong.size() - 1);
         quickSortBooks(qBook, 0, qBook.size() - 1);
         quickSortCities(qCity, 0, qCity.size() - 1);
+        auto quickEnd = chrono::high_resolution_clock::now();
+        chrono::duration<double> quickTime = quickEnd - quickStart;
+        cout << "Quick Sort Time: " << quickTime.count() << " seconds." << endl;
     }
 
 
