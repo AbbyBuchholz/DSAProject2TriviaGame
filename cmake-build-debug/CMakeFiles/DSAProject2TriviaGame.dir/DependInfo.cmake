@@ -8,8 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/pokem/CLionProjects/DSAProject2TriviaGame/sort.cpp" "CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj" "gcc" "CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj.d"
   "C:/Users/pokem/CLionProjects/DSAProject2TriviaGame/src/main.cpp" "CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj" "gcc" "CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj.d"
+  "C:/Users/pokem/CLionProjects/DSAProject2TriviaGame/src/question.cpp" "CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj" "gcc" "CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj.d"
+  "C:/Users/pokem/CLionProjects/DSAProject2TriviaGame/src/sort.cpp" "CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj" "gcc" "CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

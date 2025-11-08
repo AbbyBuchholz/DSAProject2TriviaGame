@@ -86,36 +86,53 @@ CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\src\main.cpp -o CMakeFiles\DSAProject2TriviaGame.dir\src\main.cpp.s
 
-CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj: CMakeFiles/DSAProject2TriviaGame.dir/flags.make
-CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj: CMakeFiles/DSAProject2TriviaGame.dir/includes_CXX.rsp
-CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj: C:/Users/pokem/CLionProjects/DSAProject2TriviaGame/sort.cpp
-CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj: CMakeFiles/DSAProject2TriviaGame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj -MF CMakeFiles\DSAProject2TriviaGame.dir\sort.cpp.obj.d -o CMakeFiles\DSAProject2TriviaGame.dir\sort.cpp.obj -c C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\sort.cpp
+CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj: CMakeFiles/DSAProject2TriviaGame.dir/flags.make
+CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj: CMakeFiles/DSAProject2TriviaGame.dir/includes_CXX.rsp
+CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj: C:/Users/pokem/CLionProjects/DSAProject2TriviaGame/src/sort.cpp
+CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj: CMakeFiles/DSAProject2TriviaGame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj -MF CMakeFiles\DSAProject2TriviaGame.dir\src\sort.cpp.obj.d -o CMakeFiles\DSAProject2TriviaGame.dir\src\sort.cpp.obj -c C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\src\sort.cpp
 
-CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\sort.cpp > CMakeFiles\DSAProject2TriviaGame.dir\sort.cpp.i
+CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\src\sort.cpp > CMakeFiles\DSAProject2TriviaGame.dir\src\sort.cpp.i
 
-CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\sort.cpp -o CMakeFiles\DSAProject2TriviaGame.dir\sort.cpp.s
+CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\src\sort.cpp -o CMakeFiles\DSAProject2TriviaGame.dir\src\sort.cpp.s
+
+CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj: CMakeFiles/DSAProject2TriviaGame.dir/flags.make
+CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj: CMakeFiles/DSAProject2TriviaGame.dir/includes_CXX.rsp
+CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj: C:/Users/pokem/CLionProjects/DSAProject2TriviaGame/src/question.cpp
+CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj: CMakeFiles/DSAProject2TriviaGame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj -MF CMakeFiles\DSAProject2TriviaGame.dir\src\question.cpp.obj.d -o CMakeFiles\DSAProject2TriviaGame.dir\src\question.cpp.obj -c C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\src\question.cpp
+
+CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.i"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\src\question.cpp > CMakeFiles\DSAProject2TriviaGame.dir\src\question.cpp.i
+
+CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.s"
+	C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\src\question.cpp -o CMakeFiles\DSAProject2TriviaGame.dir\src\question.cpp.s
 
 # Object files for target DSAProject2TriviaGame
 DSAProject2TriviaGame_OBJECTS = \
 "CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj" \
-"CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj"
+"CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj" \
+"CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj"
 
 # External object files for target DSAProject2TriviaGame
 DSAProject2TriviaGame_EXTERNAL_OBJECTS =
 
 DSAProject2TriviaGame.exe: CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.obj
-DSAProject2TriviaGame.exe: CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj
+DSAProject2TriviaGame.exe: CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj
+DSAProject2TriviaGame.exe: CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj
 DSAProject2TriviaGame.exe: CMakeFiles/DSAProject2TriviaGame.dir/build.make
 DSAProject2TriviaGame.exe: CMakeFiles/DSAProject2TriviaGame.dir/linkLibs.rsp
 DSAProject2TriviaGame.exe: CMakeFiles/DSAProject2TriviaGame.dir/objects1.rsp
 DSAProject2TriviaGame.exe: CMakeFiles/DSAProject2TriviaGame.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable DSAProject2TriviaGame.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable DSAProject2TriviaGame.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\DSAProject2TriviaGame.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -84,12 +84,12 @@ clean: CMakeFiles/DSAProject2TriviaGame.dir/clean
 CMakeFiles/DSAProject2TriviaGame.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles --progress-num=1,2,3 "Built target DSAProject2TriviaGame"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Built target DSAProject2TriviaGame"
 .PHONY : CMakeFiles/DSAProject2TriviaGame.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DSAProject2TriviaGame.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/DSAProject2TriviaGame.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/DSAProject2TriviaGame.dir/rule
@@ -101,7 +101,7 @@ DSAProject2TriviaGame: CMakeFiles/DSAProject2TriviaGame.dir/rule
 # codegen rule for target.
 CMakeFiles/DSAProject2TriviaGame.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles --progress-num=1,2,3 "Finished codegen for target DSAProject2TriviaGame"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\pokem\CLionProjects\DSAProject2TriviaGame\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target DSAProject2TriviaGame"
 .PHONY : CMakeFiles/DSAProject2TriviaGame.dir/codegen
 
 # clean rule for target.

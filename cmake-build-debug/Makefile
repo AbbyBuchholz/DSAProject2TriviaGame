@@ -128,30 +128,6 @@ DSAProject2TriviaGame/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/build
 .PHONY : DSAProject2TriviaGame/fast
 
-sort.obj: sort.cpp.obj
-.PHONY : sort.obj
-
-# target to build an object file
-sort.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.obj
-.PHONY : sort.cpp.obj
-
-sort.i: sort.cpp.i
-.PHONY : sort.i
-
-# target to preprocess a source file
-sort.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.i
-.PHONY : sort.cpp.i
-
-sort.s: sort.cpp.s
-.PHONY : sort.s
-
-# target to generate assembly for a file
-sort.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/sort.cpp.s
-.PHONY : sort.cpp.s
-
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -176,6 +152,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/question.obj: src/question.cpp.obj
+.PHONY : src/question.obj
+
+# target to build an object file
+src/question.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.obj
+.PHONY : src/question.cpp.obj
+
+src/question.i: src/question.cpp.i
+.PHONY : src/question.i
+
+# target to preprocess a source file
+src/question.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.i
+.PHONY : src/question.cpp.i
+
+src/question.s: src/question.cpp.s
+.PHONY : src/question.s
+
+# target to generate assembly for a file
+src/question.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/src/question.cpp.s
+.PHONY : src/question.cpp.s
+
+src/sort.obj: src/sort.cpp.obj
+.PHONY : src/sort.obj
+
+# target to build an object file
+src/sort.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.obj
+.PHONY : src/sort.cpp.obj
+
+src/sort.i: src/sort.cpp.i
+.PHONY : src/sort.i
+
+# target to preprocess a source file
+src/sort.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.i
+.PHONY : src/sort.cpp.i
+
+src/sort.s: src/sort.cpp.s
+.PHONY : src/sort.s
+
+# target to generate assembly for a file
+src/sort.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSAProject2TriviaGame.dir\build.make CMakeFiles/DSAProject2TriviaGame.dir/src/sort.cpp.s
+.PHONY : src/sort.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -185,12 +209,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... DSAProject2TriviaGame
-	@echo ... sort.obj
-	@echo ... sort.i
-	@echo ... sort.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/question.obj
+	@echo ... src/question.i
+	@echo ... src/question.s
+	@echo ... src/sort.obj
+	@echo ... src/sort.i
+	@echo ... src/sort.s
 .PHONY : help
 
 
