@@ -316,6 +316,7 @@ void mergeCities(vector<Cities>& qVector, int leftIndex, int midIndex, int right
 }
 
 // The original mergesort functions that keep splitting up the vectors
+// Used in-class example as a base for the mergeSort function
 void mergeSortM1(vector<Movies1>& qVector, int left, int right)
 {
     if(left < right)
@@ -410,6 +411,7 @@ bool compareQuickSortCities(Cities& ele, Cities& pivot)
 }
 
 // The original quickSort functions using the middle element as a partition
+// Used https://www.algolist.net/Algorithms/Sorting/Quicksort as a base for the quickSort function
 void quickSortM1(vector<Movies1>& qVector, int low, int high)
 {
     Movies1 pivot = qVector[(low + (high-low)/2)];
