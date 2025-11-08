@@ -2,15 +2,16 @@ import { useState, useEffect} from 'react'
 import './App.css'
 
 function App() {
-    const options = ["Op1", "Op2", "Op3", "Op4"];
     const categories = ["Books", "Movies", "Songs", "Cities"];
     const categoryColor = ['#C28686', '#C5B885', '#C78FB4', '#8CC084'];
 
-  const [selected, setSelected] = useState(Array(options.length).fill(true));
+  const [selected, setSelected] = useState(Array(categories.length).fill(true));
   const [randomItem, setRandomItem] = useState("Click Next!");
     const [randomColor, setRandomColor] = useState('white');
 
     const[question, setQuestion] = useState("");
+    const[answer, setAnswer] = useState("");
+    const[userAnswer, setUserAnswer] = useState("");
     const[points, setPoints] = useState(0);
 
     const toggleBox = (index) => {
@@ -26,29 +27,37 @@ function App() {
     };
 
     const pickRandomItem = async () => {
-        let randomIndex = Math.floor(Math.random() * categories.length);
-        //console.log(randomIndex, selected[randomIndex]);
-        while (selected[randomIndex] !== true){
-            randomIndex = Math.floor(Math.random() * categories.length);
-        }
-        setRandomItem(categories[randomIndex]);
-        setRandomColor(categoryColor[randomIndex]);
-
         try{
-            const res = await fetch("http://localhost:5000/random");
+            const res = await fetch("http://localhost:5000/random", {
+            method: "POST",
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify({userInput: "next"}),
+        });
             const data = await res.json();
+            console.log("Response data:", data);
             setQuestion(data.question || "Got questions! Click Next to begin!");
-        } catch {
+            setAnswer(data.answer);
+            if (data.question && data.category) {
+                setQuestion(data.question);
+
+                const catIndex = categories.findIndex(cat => cat === data.category);
+
+                if (catIndex !== -1) {
+                    setRandomItem(categories[catIndex]);
+                    setRandomColor(categoryColor[catIndex]);
+                }
+            }
+        } catch (err){
             setQuestion("Couldn't find a question!");
         }
+        document.getElementById("guess").disabled = false;
     };
 
-    const answering = async () => {
-        try{
-            const res = await fetch("http://localhost:5000/random");
-            const data = await res.json();
-        } catch {
-            setPoints(-30);
+    const answering = () => {
+        if (userAnswer == answer && answer != ""){
+            setPoints(points+1);
+            setUserAnswer("");
+            document.getElementById("guess").disabled = true;
         }
     };
   return (
@@ -65,7 +74,7 @@ function App() {
                   {randomItem && randomColor && <div id="categoryDisplay" style={{backgroundColor: randomColor}}>{randomItem}</div>}
                   <span>
               <p>Points:</p>
-              <p>0</p>
+              <p>{points}</p>
                   </span>
               </div>
               <div id="question">
@@ -73,9 +82,9 @@ function App() {
               </div>
               <div id="guessingArea">
                   <p>Guess:</p>
-                  <input type="text" placeholder="Type here..."/>
+                  <input id="guess" type="text" placeholder="Type here..." value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)}/>
                   <label className="buttonBar">
-                      <button className="buttonGuess"></button>
+                      <button onClick={answering} className="buttonGuess"></button>
                       <span>Submit</span>
                   </label>
                   <label className="buttonBar">
@@ -103,6 +112,16 @@ function App() {
                           <span id="toggle-text">Heap Sort</span>
                       </div>
                   </div>
+                      <div id="buttonsAside">
+                      <label className="buttonBar">
+                          <button className="buttonGuess"></button>
+                          <span>Sort</span>
+                      </label>
+                      <label className="buttonBar">
+                          <button onClick={() => handleClick("randomize")} className="buttonGuess"></button>
+                          <span>Randomize</span>
+                      </label>
+                      </div>
                   <p>Select categories:</p>
                   <div className="multiselect">
                       <label className="toggle"><input type="checkbox" checked={selected[0]}
