@@ -21,3 +21,6 @@ node server.js
 This will run a localhost as well, that being localhost:5000.
 
 This will allow interaction between our C++ code and the frontend and allow it save data.
+
+Common loading errors might occur due to new instances of localhost. Usually if you reset the server and delete
+main.exe and questions.txt (it gets reloaded upon running server.js) it should be able to fix some issues.
