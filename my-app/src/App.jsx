@@ -95,7 +95,7 @@ function App() {
                   <p>{question}</p>
               </div>
               <div id="guessingArea">
-                  <p>Guess:</p>
+                  <p id="guessThing">Guess:</p>
                   <input id="guess" type="text" placeholder="Type here..." value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)}/>
                   <label className="buttonBar">
                       <button onClick={answering} className="buttonGuess"></button>

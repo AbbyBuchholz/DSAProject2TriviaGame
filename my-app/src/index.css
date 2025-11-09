@@ -253,3 +253,17 @@ input:checked + .slider:before {
   display: block;
   margin: 0 5%;
 }
+#guessingArea{
+  display: flex;
+  margin: 0 10%;
+  justify-content: center;
+  align-content: center;
+  padding-right: 20px;
+}
+#guessThing{
+  padding-right: 20px;
+  font-size: 17px;
+}
+#guess{
+  width: 50%;
+}
