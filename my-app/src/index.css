@@ -47,7 +47,7 @@ main{
   background-color: white;
   width: 65%;
   height: 500px;
-  margin-right: 5px;
+  margin-right: 30px;
 }
 
 aside{
@@ -119,10 +119,9 @@ input:checked + .slider:before {
 .flexBox {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 0 22%;
 }
 .flexItem {
   display: flex;
@@ -218,4 +217,39 @@ input:checked + .slider:before {
   justify-content: center;
   align-content: center;
   margin: 0 auto;
+}
+#header{
+  justify-content: center;
+  align-content: center;
+  display: block;
+  width: 70%;
+}
+.buttonSort{
+  display: inline-flex;
+  background-color: #A886C2;
+  width: 80%;
+  height: 40px;
+  cursor:pointer;
+  margin: 0 5px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #888;
+}
+.buttonSort:active{
+  background-color: #7340B5;
+  color: white;
+}
+#points{
+  justify-content: center;
+  align-content: center;
+  display: block;
+  margin: 0 5%;
+}
+#category{
+  justify-content: center;
+  padding-top:20px;
+  font-size: 30px;
+  display: block;
+  margin: 0 5%;
 }

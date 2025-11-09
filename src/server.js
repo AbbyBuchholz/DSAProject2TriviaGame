@@ -17,8 +17,11 @@ const bridgesLib = path.join(projectRoot, "libraries", "bridges", "lib");
 const curlInclude = path.join(projectRoot, "libraries", "curl", "include");
 const curlLib = path.join(projectRoot, "libraries", "curl", "lib");
 
-const compileCommand = `g++ "${cppPath}" -o "${exePath}" -std=c++14 -I"${bridgesInclude}" -I"${bridgesLib}" -I"${curlInclude}" -L"${curlLib}" -lcurl`;
-//this nonsense allows it to compile only once, thus saving time
+const sortPath = path.join(__dirname, "sort.cpp");
+const questionPath = path.join(__dirname, "question.cpp");
+
+const compileCommand = `g++ "${cppPath}" "${sortPath}" "${questionPath}" -o "${exePath}" -std=c++14 \
+-I"${bridgesInclude}" -I"${curlInclude}" -L"${curlLib}" -lcurl`;//make an exe. I don't like it either
 
 const { exec } = require("child_process");
 exec(compileCommand, (err, stdout, stderr) => {
@@ -31,8 +34,10 @@ exec(compileCommand, (err, stdout, stderr) => {
 
 app.post("/random", (req, res) => {
     const userInput = req.body.userInput || "";
+    const counter = req.body.counter || "";
+    const { books = false, movies = false, songs = false, cities = false } = req.body.categories || {};
 
-    const child = spawn(exePath, [userInput], { cwd: path.dirname(exePath) });
+    const child = spawn(exePath, [userInput, counter, books ? "1" : 0, movies? "1" : 0, songs? "1" : 0, cities? "1" : 0], { cwd: path.dirname(exePath) });
 
     let output = "";
     let error = "";
@@ -62,4 +67,4 @@ app.post("/random", (req, res) => {
     });
 });
 
-app.listen(5000, () => console.log("Server running on http://localhost:5000"));
+app.listen(5000, () => console.log("This is on http://localhost:5000, wait until you see main.cpp validated to press anything"));
