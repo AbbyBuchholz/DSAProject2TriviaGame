@@ -161,7 +161,7 @@ void Movies1::createQuestion() {
         question = actorFirstName + " " + actorLastName + " appears in " + title + " in which year?";
         answer = year;
     } else if (variation == 9) {
-        question = "You’re a time traveler in the year " + year + " and just got invited to the movie starring" + actorFirstName + " " + actorLastName + ". Which movie are you seeing?";
+        question = "You’re a time traveler in the year " + year + " and just got invited to the movie starring " + actorFirstName + " " + actorLastName + ". Which movie are you seeing?";
         answer = title;
     } else if (variation == 10) {
         question = "You’re a time traveler who doesn’t know what year it is and just got invited to the movie " + title + " starring " + actorFirstName + " " + actorLastName + ". What year are you in?";
