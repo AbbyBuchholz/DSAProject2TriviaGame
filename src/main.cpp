@@ -20,7 +20,7 @@ using namespace bridges;
 // hi sophia and adam!! hope y'all are well :)
 // we got this
 
-vector<Question> createData(bool isMergeSort, bool isQuickSort) {
+vector<Question> createData(bool isMergeSort, bool isQuickSort, vector<bool> flags) {
     Bridges bridges(1, "s-pappous", "1078662839858");
     bridges.setTitle("Accessing Necessary Data");
     DataSource ds (&bridges);
@@ -37,258 +37,265 @@ vector<Question> createData(bool isMergeSort, bool isQuickSort) {
     vector<Songs> qSong;
     vector<Books> qBook;
     vector<Cities> qCity;
-
-    cout << "IMDB1 Data:" << endl;
-    vector<ActorMovieIMDB> actor_list1 = ds.getActorMovieIMDBData();
-    for (int j = 1; j <= 10; j++) {
-        for (int i = 0; i < actor_list1.size(); i++)
-        {
-            // Actor Data
-            string currActor = actor_list1[i].getActor();
-            string lastName = "";
-            int sPos = currActor.find('(');
-            int ePos = currActor.find(')');
-            if(sPos != string::npos && ePos != string::npos)
-                currActor.erase(sPos - 1, ePos + 1);
-            replace(currActor.begin(), currActor.end(), '_', ' ');
-            if(currActor.find(" ") != string::npos)
+    if (flags[1] == true) {
+        cout << "IMDB1 Data included! " << endl;
+        vector<ActorMovieIMDB> actor_list1 = ds.getActorMovieIMDBData();
+        for (int j = 1; j <= 10; j++) {
+            for (int i = 0; i < actor_list1.size(); i++)
             {
-                int stPos = currActor.find(" ");
-                lastName = currActor.substr(stPos + 1);
-                currActor.erase(stPos, lastName.length() + 1);
-            }
-
-            // Movie Title Data
-            string currMovie = actor_list1[i].getMovie();
-            replace(currMovie.begin(), currMovie.end(), '_', ' ');
-            if(currMovie.find('#') != string::npos || currMovie.find('{') != string::npos || currMovie.find("(TV)") != string::npos)
-            {
-                actor_list1.erase(actor_list1.begin());
-                i--;
-            }
-            else
-            {
-                int startPos = currMovie.find('(');
-                int endPos = currMovie.find(')');
-
-                // Year Data
-                string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
+                // Actor Data
+                string currActor = actor_list1[i].getActor();
+                string lastName = "";
+                int sPos = currActor.find('(');
+                int ePos = currActor.find(')');
+                if(sPos != string::npos && ePos != string::npos)
+                    currActor.erase(sPos - 1, ePos + 1);
+                replace(currActor.begin(), currActor.end(), '_', ' ');
+                if(currActor.find(" ") != string::npos)
+                {
+                    int stPos = currActor.find(" ");
+                    lastName = currActor.substr(stPos + 1);
+                    currActor.erase(stPos, lastName.length() + 1);
+                }
 
                 // Movie Title Data
-                currMovie.erase(startPos, endPos);
-                if(currMovie.find(", The") != string::npos)
+                string currMovie = actor_list1[i].getMovie();
+                replace(currMovie.begin(), currMovie.end(), '_', ' ');
+                if(currMovie.find('#') != string::npos || currMovie.find('{') != string::npos || currMovie.find("(TV)") != string::npos)
                 {
-                    int stPos = currMovie.find(", The");
-                    int phraseLen = 5;
-                    string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
-                    currMovie.erase(stPos, phraseLen);
-                    currMovie.insert(0, currPhrase);
+                    actor_list1.erase(actor_list1.begin());
+                    i--;
                 }
-                else if(currMovie.find(", A") != string::npos)
+                else
                 {
-                    int stPos = currMovie.find(", A");
-                    int phraseLen = 3;
-                    string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
-                    currMovie.erase(stPos, phraseLen);
-                    currMovie.insert(0, currPhrase);
-                }
-                else if(currMovie.find(", An") != string::npos)
-                {
-                    int stPos = currMovie.find(", An");
-                    int phraseLen = 4;
-                    string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
-                    currMovie.erase(stPos, phraseLen);
-                    currMovie.insert(0, currPhrase);
-                }
-                else if(currMovie.find(", La") != string::npos)
-                {
-                    int stPos = currMovie.find(", La");
-                    int phraseLen = 4;
-                    string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
-                    currMovie.erase(stPos, phraseLen);
-                    currMovie.insert(0, currPhrase);
-                }
+                    int startPos = currMovie.find('(');
+                    int endPos = currMovie.find(')');
 
-                Movies1* m1 = new Movies1(currActor, lastName, currMovie, currYear, j);
-                qActor1.push_back(*m1);
+                    // Year Data
+                    string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
 
-                cout
-                    << "Movie: " << currMovie << endl
-                    << "\tActor: " << currActor << " " << lastName << endl
-                    << "\tYear: " << currYear << "\n" << endl;
-                count1 += 3;
+                    // Movie Title Data
+                    currMovie.erase(startPos, endPos);
+                    if(currMovie.find(", The") != string::npos)
+                    {
+                        int stPos = currMovie.find(", The");
+                        int phraseLen = 5;
+                        string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
+                        currMovie.erase(stPos, phraseLen);
+                        currMovie.insert(0, currPhrase);
+                    }
+                    else if(currMovie.find(", A") != string::npos)
+                    {
+                        int stPos = currMovie.find(", A");
+                        int phraseLen = 3;
+                        string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
+                        currMovie.erase(stPos, phraseLen);
+                        currMovie.insert(0, currPhrase);
+                    }
+                    else if(currMovie.find(", An") != string::npos)
+                    {
+                        int stPos = currMovie.find(", An");
+                        int phraseLen = 4;
+                        string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
+                        currMovie.erase(stPos, phraseLen);
+                        currMovie.insert(0, currPhrase);
+                    }
+                    else if(currMovie.find(", La") != string::npos)
+                    {
+                        int stPos = currMovie.find(", La");
+                        int phraseLen = 4;
+                        string currPhrase = currMovie.substr(stPos + 2, phraseLen - 2) + " ";
+                        currMovie.erase(stPos, phraseLen);
+                        currMovie.insert(0, currPhrase);
+                    }
+
+                    Movies1* m1 = new Movies1(currActor, lastName, currMovie, currYear, j);
+                    qActor1.push_back(*m1);
+
+                    /*cout
+                        << "Movie: " << currMovie << endl
+                        << "\tActor: " << currActor << " " << lastName << endl
+                        << "\tYear: " << currYear << "\n" << endl;*/
+                    count1 += 3;
+                }
             }
         }
-    }
 
-    cout << "IMDB2 Data:" << endl;
-    vector<ActorMovieIMDB> actor_list2 = ds.getActorMovieIMDBData2();
-    for (int i = 0; i <= 10; i++) {
-        for (int j = 0; j < actor_list2.size(); j++)
-        {
-            // Actor Name Data
-            string currActor = actor_list2[j].getActor();
-            string firstName = "";
-
-            int sPos = currActor.find('(');
-            int ePos = currActor.find(')');
-            if(sPos != string::npos && ePos != string::npos)
-                currActor.erase(sPos, ePos);
-
-            replace(currActor.begin(), currActor.end(), '_', ' ');
-            if(currActor.find(",") != string::npos)
+        cout << "IMDB2 Data included! " << endl;
+        vector<ActorMovieIMDB> actor_list2 = ds.getActorMovieIMDBData2();
+        for (int i = 0; i <= 10; i++) {
+            for (int j = 0; j < actor_list2.size(); j++)
             {
-                int stPos = currActor.find(",");
-                firstName = currActor.substr(stPos + 2);
-                currActor.erase(stPos, firstName.length() + 1);
-            }
+                // Actor Name Data
+                string currActor = actor_list2[j].getActor();
+                string firstName = "";
 
-            // Movie Title Data
-            string currMovie = actor_list2[j].getMovie();
-            replace(currMovie.begin(), currMovie.end(), '_', ' ');
-            // Rating Data
-            int currRating = actor_list2[j].getMovieRating();
-            // Movie Title Data
-            if(currMovie.find('#') != string::npos || currMovie.find('{') != string::npos || currMovie.find("(TV)") != string::npos)
-            {
-                actor_list2.erase(actor_list2.begin());
-                j--;
-            }
-            else
-            {
-                // Genre Data
-                vector<string> allGenres = actor_list2[j].getGenres();
-                string currGenres = "";
-                for(string item : allGenres)
+                int sPos = currActor.find('(');
+                int ePos = currActor.find(')');
+                if(sPos != string::npos && ePos != string::npos)
+                    currActor.erase(sPos, ePos);
+
+                replace(currActor.begin(), currActor.end(), '_', ' ');
+                if(currActor.find(",") != string::npos)
                 {
-                    currGenres += item + ", ";
+                    int stPos = currActor.find(",");
+                    firstName = currActor.substr(stPos + 2);
+                    currActor.erase(stPos, firstName.length() + 1);
                 }
-                if(currGenres.find("Documentary") != string::npos || currGenres.find("Sport") != string::npos || currGenres.find("News") != string::npos || currGenres.find("Short") != string::npos || currGenres.find("Talk-Show") != string::npos || currGenres.find("Biography") != string::npos || currGenres.find("Music") != string::npos || currGenres.find("Reality-TV") != string::npos || currGenres.find("Game-Show") != string::npos)
+
+                // Movie Title Data
+                string currMovie = actor_list2[j].getMovie();
+                replace(currMovie.begin(), currMovie.end(), '_', ' ');
+                // Rating Data
+                int currRating = actor_list2[j].getMovieRating();
+                // Movie Title Data
+                if(currMovie.find('#') != string::npos || currMovie.find('{') != string::npos || currMovie.find("(TV)") != string::npos)
                 {
                     actor_list2.erase(actor_list2.begin());
                     j--;
                 }
                 else
                 {
-                    // Year Data
-                    int startPos = currMovie.find('(');
-                    int endPos = currMovie.find(')');
-                    string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
-                    currMovie.erase(startPos, endPos);
+                    // Genre Data
+                    vector<string> allGenres = actor_list2[j].getGenres();
+                    string currGenres = "";
+                    for(string item : allGenres)
+                    {
+                        currGenres += item + ", ";
+                    }
+                    if(currGenres.find("Documentary") != string::npos || currGenres.find("Sport") != string::npos || currGenres.find("News") != string::npos || currGenres.find("Short") != string::npos || currGenres.find("Talk-Show") != string::npos || currGenres.find("Biography") != string::npos || currGenres.find("Music") != string::npos || currGenres.find("Reality-TV") != string::npos || currGenres.find("Game-Show") != string::npos)
+                    {
+                        actor_list2.erase(actor_list2.begin());
+                        j--;
+                    }
+                    else
+                    {
+                        // Year Data
+                        int startPos = currMovie.find('(');
+                        int endPos = currMovie.find(')');
+                        string currYear = currMovie.substr(startPos + 1, endPos - startPos - 1);
+                        currMovie.erase(startPos, endPos);
 
-                    Movies2* m2 = new Movies2(firstName, currActor, currMovie, allGenres, currYear, to_string(currRating), i);
-                    qActor2.push_back(*m2);
+                        Movies2* m2 = new Movies2(firstName, currActor, currMovie, allGenres, currYear, to_string(currRating), i);
+                        qActor2.push_back(*m2);
 
-                    cout
-                    << "Movie: " << currMovie << endl
-                    << "\tActor: " << firstName << " " << currActor << endl
-                    << "\tGenre: " << currGenres << endl
-                    << "\tYear: " << currYear << endl
-                    << "\tRating: " << currRating << "/10\n" << endl;
-                    count2 += 4 + allGenres.size();
+                        /*cout
+                        << "Movie: " << currMovie << endl
+                        << "\tActor: " << firstName << " " << currActor << endl
+                        << "\tGenre: " << currGenres << endl
+                        << "\tYear: " << currYear << endl
+                        << "\tRating: " << currRating << "/10\n" << endl;*/
+                        count2 += 4 + allGenres.size();
+                    }
                 }
             }
         }
     }
 
-    cout << "Song Data:" << endl;
-    vector<Song> song_list = ds.getSongData();
-    for (int j = 1; j <= 10; j++) {
-        for (int i = 0; i < song_list.size(); i++)
-        {
-            string currTitle = song_list[i].getSongTitle();
-            string currArtist = song_list[i].getArtist();
-            string currDate = song_list[i].getReleaseDate();
-            string currAlbum = song_list[i].getAlbumTitle();
+    if (flags[2] == true) {
+        cout << "Song Data included! " << endl;
+        vector<Song> song_list = ds.getSongData();
+        for (int j = 1; j <= 10; j++) {
+            for (int i = 0; i < song_list.size(); i++)
+            {
+                string currTitle = song_list[i].getSongTitle();
+                string currArtist = song_list[i].getArtist();
+                string currDate = song_list[i].getReleaseDate();
+                string currAlbum = song_list[i].getAlbumTitle();
 
-            Songs* s = new Songs(currTitle, currAlbum, currDate, currArtist, j);
-            qSong.push_back(*s);
-            cout
-                    << "Song: " << currTitle << endl
-                    << "\tArtist: " << currArtist << endl
-                    << "\tDate: " << currDate << endl
-                    << "\tAlbum: " << currAlbum << "\n" << endl;
-            count3 += 4;
+                Songs* s = new Songs(currTitle, currAlbum, currDate, currArtist, j);
+                qSong.push_back(*s);
+                /*cout
+                        << "Song: " << currTitle << endl
+                        << "\tArtist: " << currArtist << endl
+                        << "\tDate: " << currDate << endl
+                        << "\tAlbum: " << currAlbum << "\n" << endl;*/
+                count3 += 4;
+            }
         }
     }
 
-    cout << "Book Data:" << endl;
-    vector<GutenbergBook> books_list;
-    for (int i = 1; i < 40; i++) {
-        books_list.push_back(ds.getGutenbergBookMetaData(i));
-    }
-    for (int j = 1; j <= 10; j++) {
-        for (int k = 0; k < books_list.size(); k++)
-        {
-            // Book Title Data
-            string currTitle = books_list[k].getTitle();
-            string firstName = "";
-            string lastName = "";
-
-            // Gets the main author and sets it as the author.
-            vector<string> allAuthors = books_list[k].getAuthors();
-            if(!allAuthors.empty())
+    if (flags[0] == true) {
+        cout << "Book Data included! " << endl;
+        vector<GutenbergBook> books_list;
+        for (int i = 1; i < 40; i++) {
+            books_list.push_back(ds.getGutenbergBookMetaData(i));
+        }
+        for (int j = 1; j <= 10; j++) {
+            for (int k = 0; k < books_list.size(); k++)
             {
-                lastName = allAuthors[0];
-                if(lastName.find(",") != string::npos)
+                // Book Title Data
+                string currTitle = books_list[k].getTitle();
+                string firstName = "";
+                string lastName = "";
+
+                // Gets the main author and sets it as the author.
+                vector<string> allAuthors = books_list[k].getAuthors();
+                if(!allAuthors.empty())
                 {
-                    int stPos = lastName.find(",");
-                    firstName = lastName.substr(stPos + 2);
-                    lastName.erase(stPos, firstName.length() + 1);
+                    lastName = allAuthors[0];
+                    if(lastName.find(",") != string::npos)
+                    {
+                        int stPos = lastName.find(",");
+                        firstName = lastName.substr(stPos + 2);
+                        lastName.erase(stPos, firstName.length() + 1);
+                    }
                 }
+
+                // Language Data
+                string currLang = books_list[k].getLang();
+                // Book Genre Data
+                vector<string> allGenres = books_list[k].getGenres();
+                string currGenres = "";
+                for(string item : allGenres)
+                {
+                    currGenres += item + ", ";
+                }
+
+                Books* b = new Books(firstName, lastName, currTitle, currLang, allGenres, j);
+                qBook.push_back(*b);
+
+                /*cout
+                        << "Title: " << currTitle << endl
+                        << "\tAuthor: " << firstName << " " << lastName << endl
+                        << "\tLanguage: " << currLang << endl
+                        << "\tGenres: " << currGenres << "\n" << endl;*/
+                count4 += 2 + allAuthors.size() + allGenres.size();
             }
-
-            // Language Data
-            string currLang = books_list[k].getLang();
-            // Book Genre Data
-            vector<string> allGenres = books_list[k].getGenres();
-            string currGenres = "";
-            for(string item : allGenres)
-            {
-                currGenres += item + ", ";
-            }
-
-            Books* b = new Books(firstName, lastName, currTitle, currLang, allGenres, j);
-            qBook.push_back(*b);
-
-            cout
-                    << "Title: " << currTitle << endl
-                    << "\tAuthor: " << firstName << " " << lastName << endl
-                    << "\tLanguage: " << currLang << endl
-                    << "\tGenres: " << currGenres << "\n" << endl;
-            count4 += 2 + allAuthors.size() + allGenres.size();
         }
     }
 
-    cout << "U.S. City Data: " << endl;
-    unordered_map<string, string> city_params{
-        {"min_pop", "100000"}
-    };
-    vector<City> cities_list = ds.getUSCities(city_params);
-    for (int j = 1; j <= 10; j++) {
-        for (int i = 0; i < cities_list.size(); i++)
-        {
-            string currCity = cities_list[i].getCity();
-            string currState = cities_list[i].getState();
-            string currCountry = cities_list[i].getCountry();
-            int currPop = cities_list[i].getPopulation();
-            int currEle = cities_list[i].getElevation();
-            string currTime = cities_list[i].getTimeZone();
-            int currLat = cities_list[i].getLatitude();
-            int currLong = cities_list[i].getLongitude();
+    if (flags[3] == true) {
+        cout << "U.S. City Data included!  " << endl;
+        unordered_map<string, string> city_params{
+            {"min_pop", "100000"}
+        };
+        vector<City> cities_list = ds.getUSCities(city_params);
+        for (int j = 1; j <= 10; j++) {
+            for (int i = 0; i < cities_list.size(); i++)
+            {
+                string currCity = cities_list[i].getCity();
+                string currState = cities_list[i].getState();
+                string currCountry = cities_list[i].getCountry();
+                int currPop = cities_list[i].getPopulation();
+                int currEle = cities_list[i].getElevation();
+                string currTime = cities_list[i].getTimeZone();
+                int currLat = cities_list[i].getLatitude();
+                int currLong = cities_list[i].getLongitude();
 
-            Cities* c = new Cities(currCity, currState, currCountry, to_string(currPop), to_string(currEle), currTime, to_string(currLat), to_string(currLong), j);
-            qCity.push_back(*c);
-            cout
-                    << "City: " << currCity << endl
-                    << "\tState: " << currState << endl
-                    << "\tCountry: " << currCountry << endl
-                    << "\tPopulation: " << currPop << endl
-                    << "\tElevation: " << currEle << " meters" << endl
-                    << "\tTime Zone: " << currTime << endl
-                    << "\tLatitude: " << currLat << endl
-                    << "\tLongitude: " << currLong << "\n" << endl;
-            count5 += 8;
+                Cities* c = new Cities(currCity, currState, currCountry, to_string(currPop), to_string(currEle), currTime, to_string(currLat), to_string(currLong), j);
+                qCity.push_back(*c);
+                /*cout
+                        << "City: " << currCity << endl
+                        << "\tState: " << currState << endl
+                        << "\tCountry: " << currCountry << endl
+                        << "\tPopulation: " << currPop << endl
+                        << "\tElevation: " << currEle << " meters" << endl
+                        << "\tTime Zone: " << currTime << endl
+                        << "\tLatitude: " << currLat << endl
+                        << "\tLongitude: " << currLong << "\n" << endl;*/
+                count5 += 8;
+            }
         }
     }
 
@@ -297,11 +304,11 @@ vector<Question> createData(bool isMergeSort, bool isQuickSort) {
     if(isMergeSort)
     {
         auto mergeStart = chrono::high_resolution_clock::now();
-        mergeSortM1(qActor1, 0, qActor1.size() - 1);
-        mergeSortM2(qActor2, 0, qActor2.size() - 1);
-        mergeSortSongs(qSong, 0, qSong.size() - 1);
-        mergeSortBooks(qBook, 0, qBook.size() - 1);
-        mergeSortCities(qCity, 0, qCity.size() - 1);
+        if (!qActor1.empty()) mergeSortM1(qActor1, 0, qActor1.size() - 1);
+        if (!qActor2.empty()) mergeSortM2(qActor2, 0, qActor2.size() - 1);
+        if (!qSong.empty()) mergeSortSongs(qSong, 0, qSong.size() - 1);
+        if (!qBook.empty()) mergeSortBooks(qBook, 0, qBook.size() - 1);
+        if (!qCity.empty()) mergeSortCities(qCity, 0, qCity.size() - 1);
         auto mergeEnd = chrono::high_resolution_clock::now();
         chrono::duration<double> mergeTime = mergeEnd - mergeStart;
         cout << "Merge Sort Time: " << mergeTime.count() << " seconds." << endl;
@@ -309,11 +316,11 @@ vector<Question> createData(bool isMergeSort, bool isQuickSort) {
     if(isQuickSort)
     {
         auto quickStart = chrono::high_resolution_clock::now();
-        quickSortM1(qActor1, 0, qActor1.size() - 1);
-        quickSortM2(qActor2, 0, qActor2.size() - 1);
-        quickSortSongs(qSong, 0, qSong.size() - 1);
-        quickSortBooks(qBook, 0, qBook.size() - 1);
-        quickSortCities(qCity, 0, qCity.size() - 1);
+        if (!qActor1.empty()) quickSortM1(qActor1, 0, qActor1.size() - 1);
+        if (!qActor2.empty()) quickSortM2(qActor2, 0, qActor2.size() - 1);
+        if (!qSong.empty()) quickSortSongs(qSong, 0, qSong.size() - 1);
+        if (!qBook.empty()) quickSortBooks(qBook, 0, qBook.size() - 1);
+        if (!qCity.empty()) quickSortCities(qCity, 0, qCity.size() - 1);
         auto quickEnd = chrono::high_resolution_clock::now();
         chrono::duration<double> quickTime = quickEnd - quickStart;
         cout << "Quick Sort Time: " << quickTime.count() << " seconds." << endl;
@@ -321,21 +328,21 @@ vector<Question> createData(bool isMergeSort, bool isQuickSort) {
 
 
     // Inserts all sorted questions into the question bank
-    questions.insert(questions.end(), qActor1.begin(), qActor1.end());
-    questions.insert(questions.end(), qActor2.begin(), qActor2.end());
-    questions.insert(questions.end(), qSong.begin(), qSong.end());
-    questions.insert(questions.end(), qBook.begin(), qBook.end());
-    questions.insert(questions.end(), qCity.begin(), qCity.end());
+    if (!qActor1.empty()) questions.insert(questions.end(), qActor1.begin(), qActor1.end());
+    if (!qActor2.empty()) questions.insert(questions.end(), qActor2.begin(), qActor2.end());
+    if (!qSong.empty()) questions.insert(questions.end(), qSong.begin(), qSong.end());
+    if (!qBook.empty())  questions.insert(questions.end(), qBook.begin(), qBook.end());
+    if (!qCity.empty()) questions.insert(questions.end(), qCity.begin(), qCity.end());
 
-    cout << "IMDB 1 Count: " << count1 << endl;
+    /*cout << "IMDB 1 Count: " << count1 << endl;
     cout << "IMDB 2 Count: " << count2 << endl;
     cout << "Song Count: " << count3 << endl;
     cout << "Book Count: " << count4 << endl;
-    cout << "U.S. City Count: " << count5 << endl;
+    cout << "U.S. City Count: " << count5 << endl;*/
 
     int total = count1 + count2 + count3 + count4 + count5;
-    cout << "Total Count: " << total << endl;
-    cout << "Vector: " << questions.size() << endl;
+    /*cout << "Total Count: " << total << endl;
+    cout << "Vector: " << questions.size() << endl;*/
     return questions;
 }
 
@@ -345,17 +352,32 @@ vector<Question> createData(bool isMergeSort, bool isQuickSort) {
 int main(int argc, char** argv) {
     ifstream infile(filename);
     string userInput;
-    if (argc > 1) {
+    string counter;
+    bool booksFlag = false;
+    bool moviesFlag = false;
+    bool songsFlag = false;
+    bool citiesFlag = false;
+    if (argc > 6) {
         userInput = argv[1];
+        counter = argv[2];
+        booksFlag = std::string(argv[3]) == "1";
+        moviesFlag = std::string(argv[4]) == "1";
+        songsFlag = std::string(argv[5]) == "1";
+        citiesFlag = std::string(argv[6]) == "1";
     } else {
         userInput = "";
+        counter = "";
+        booksFlag = false;
+        moviesFlag = false;
+        songsFlag = false;
+        citiesFlag = false;
     }
-    std::random_device rd;
-    std::mt19937 g(rd());
+
+    std::mt19937 g(time(nullptr));
 
     if (!infile.good() || (userInput == "randomize")) { //randomize the data
         ofstream outfile(filename, ios::trunc);
-        vector<Question> questions = createData(false, false);
+        vector<Question> questions = createData(false, false, {booksFlag, moviesFlag, songsFlag, citiesFlag});
         shuffle(questions.begin(), questions.end(), g);
         for (int i = 0; i < questions.size(); i++) {
             outfile << questions[i].question << "|" << questions[i].answer << "|" << questions[i].category <<endl;
@@ -365,7 +387,7 @@ int main(int argc, char** argv) {
     }
     if (userInput == "mergeSort") {
         ofstream outfile(filename, ios::trunc);
-        vector<Question> questions = createData(true, false);
+        vector<Question> questions = createData(true, false, {booksFlag, moviesFlag, songsFlag, citiesFlag});
         shuffle(questions.begin(), questions.end(), g);
         for (int i = 0; i < questions.size(); i++) {
             outfile << questions[i].question << "|" << questions[i].answer << "|" << questions[i].category << endl;
@@ -375,7 +397,7 @@ int main(int argc, char** argv) {
     }
     if (userInput == "quickSort") {
         ofstream outfile(filename, ios::trunc);
-        vector<Question> questions = createData(false, true);
+        vector<Question> questions = createData(false, true, {booksFlag, moviesFlag, songsFlag, citiesFlag});
         for (int i = 0; i < questions.size(); i++) {
             outfile << questions[i].question << "|" << questions[i].answer << "|" << questions[i].category << endl;
         }
@@ -407,10 +429,8 @@ int main(int argc, char** argv) {
         }
         infile.close();
 
-        srand(static_cast<unsigned int>(time(nullptr)));
-        int idx = rand() % questions.size();
 
-        QuestionStruct selected = questions[idx];
+        QuestionStruct selected = questions[stoi(counter)];
         cout << selected.question << "|" << selected.answer << "|" << selected.category << endl;
         return 0;
     }

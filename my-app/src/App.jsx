@@ -13,69 +13,83 @@ function App() {
     const[answer, setAnswer] = useState("");
     const[userAnswer, setUserAnswer] = useState("");
     const[points, setPoints] = useState(0);
+    const[correct, setCorrect] = useState("");
+    const [counter, setCounter] = useState(0);
 
     const toggleBox = (index) => {
         setSelected((prev) =>{
             const updated = [...prev];
-            let falseCount = updated.filter(item => item === false).length;
+            const trueCount = updated.filter((item) => item === true).length;
             //console.log(falseCount, updated[index]);
-            if (falseCount < 3 || updated[index] === false) {
-                updated[index] = !updated[index];
+            if (updated[index] && trueCount === 1) {
+                return prev;
             }
+            updated[index] = !updated[index];
             return updated;
         });
     };
 
-    const pickRandomItem = async () => {
+    const pickRandomItem = async (userInput = "next") => {
         try{
+            const categorySelection = {
+                books: selected[0],
+                movies: selected[1],
+                songs: selected[2],
+                cities: selected[3],
+            };
             const res = await fetch("http://localhost:5000/random", {
             method: "POST",
             headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify({userInput: "next"}),
+            body: JSON.stringify({userInput, counter, categories: categorySelection}),
         });
             const data = await res.json();
             console.log("Response data:", data);
-            setQuestion(data.question || "Got questions! Click Next to begin!");
-            setAnswer(data.answer);
-            if (data.question && data.category) {
-                setQuestion(data.question);
-
-                const catIndex = categories.findIndex(cat => cat === data.category);
-
+            if (data.question) setQuestion(data.question);
+            if (data.answer) setAnswer(data.answer);
+            if (data.category) {
+                const catIndex = ["Books", "Movies", "Songs", "Cities"].findIndex(
+                    (cat) => cat === data.category
+                );
                 if (catIndex !== -1) {
                     setRandomItem(categories[catIndex]);
                     setRandomColor(categoryColor[catIndex]);
                 }
             }
-        } catch (err){
+
+            setCounter((prev) => prev + 1);
+
+        } catch (err) {
             setQuestion("Couldn't find a question!");
         }
+
         document.getElementById("guess").disabled = false;
+        setUserAnswer("");
     };
 
     const answering = () => {
         if (userAnswer == answer && answer != ""){
-            setPoints(points+1);
+            setPoints(prevPoints => prevPoints + 1);
             setUserAnswer("");
             document.getElementById("guess").disabled = true;
+            setQuestionCounter(prev => prev + 1);
         }
     };
   return (
       <>
           <div id="app">
-          <header>
+          <header id="header">
               <h1>Trivia Game!</h1>
               <h5>Made by Abby Buchholz, Sophia Pappous, and Adam Jarvis</h5>
           </header>
               <div id="mainBlock">
           <main>
               <div id="topBar">
-              <span>Category:</span>
+                  <div id="category">Category:</div>
                   {randomItem && randomColor && <div id="categoryDisplay" style={{backgroundColor: randomColor}}>{randomItem}</div>}
-                  <span>
+                      <div id="points">
               <p>Points:</p>
               <p>{points}</p>
-                  </span>
+                          </div>
               </div>
               <div id="question">
                   <p>{question}</p>
@@ -88,7 +102,7 @@ function App() {
                       <span>Submit</span>
                   </label>
                   <label className="buttonBar">
-                      <button onClick={pickRandomItem} className="buttonGuess"></button>
+                      <button onClick={() => pickRandomItem("next")} className="buttonGuess"></button>
                       <span>Next</span>
                   </label>
               </div>
@@ -97,28 +111,16 @@ function App() {
                   <h3>Settings</h3>
                   <p>Sorting Algorithms:</p>
                   <div className="flexBox">
-                      <div className="flexItem">
-                          <label className="switch">
-                              <input type="checkbox"/>
-                              <span className="slider round"></span>
-                          </label>
-                          <span id="toggle-text">Merge Sort</span>
-                      </div>
-                      <div className="flexItem">
-                          <label className="switch">
-                              <input type="checkbox"/>
-                              <span className="slider round"></span>
-                          </label>
-                          <span id="toggle-text">Heap Sort</span>
-                      </div>
-                  </div>
-                      <div id="buttonsAside">
-                      <label className="buttonBar">
-                          <button className="buttonGuess"></button>
-                          <span>Sort</span>
+                      <label className="buttonSort">
+                          <button onClick={() => pickRandomItem("mergeSort")} className="buttonGuess"></button>
+                          <span>Merge Sort</span>
                       </label>
-                      <label className="buttonBar">
-                          <button onClick={() => handleClick("randomize")} className="buttonGuess"></button>
+                      <label className="buttonSort">
+                          <button onClick={() => pickRandomItem("quickSort")} className="buttonGuess"></button>
+                          <span>Quick Sort</span>
+                      </label>
+                      <label className="buttonSort">
+                          <button onClick={() => pickRandomItem("randomize")} className="buttonGuess"></button>
                           <span>Randomize</span>
                       </label>
                       </div>
@@ -137,16 +139,6 @@ function App() {
                                                        onChange={() => toggleBox(3)}/>
                           <span className="toggle-box"> Cities</span></label>
                   </div>
-
-
-                  <p>Special Categorization:</p>
-
-                  <select name="verb" id="verb">
-                      <option value="Before">Before</option>
-                      <option value="After">After</option>
-                      <option value="Only">Only</option>
-                  </select>
-                  <input type="number" min="0" max="2025"/>
               </aside>
                 </div>
           </div>
